@@ -1,7 +1,7 @@
 import {Component} from 'react'
-
 import Loader from 'react-loader-spinner'
 
+import Card from '../Card'
 import FollowingDomain from '../FollowingDomains'
 import SuggestDomains from '../SuggestDomains'
 import Header from '../Header'
@@ -20,6 +20,11 @@ import {
   HorizontalLIne,
   AcceptHeading,
   LoadingContainer,
+  FailureContainer,
+  FailureImage,
+  SomethingWrongHeading,
+  RetryButton,
+  CardUlElement,
 } from './styledComponents'
 
 const DomainNames = [
@@ -63,11 +68,11 @@ const componentApiStatus = {
 }
 
 class PlatformReviewPage extends Component {
-  state = {cardApiStatus: componentApiStatus.initial}
+  state = {cardApiStatus: componentApiStatus.success}
 
-  componentDidMount() {
-    this.getUserData()
-  }
+  //   componentDidMount() {
+  //     this.getUserData()
+  //   }
 
   getUserData = async () => {
     this.setState({cardApiStatus: componentApiStatus.inprogress})
@@ -82,9 +87,19 @@ class PlatformReviewPage extends Component {
     console.log(response)
   }
 
-  cardFailureView = () => 'Failure'
+  cardFailureView = () => (
+    <FailureContainer>
+      <FailureImage src="https://miro.medium.com/max/1400/0*zJ3sA4LbvcKen1N7.jpg" />
+      <SomethingWrongHeading>Something went wrong</SomethingWrongHeading>
+      <RetryButton type="button">Retry</RetryButton>
+    </FailureContainer>
+  )
 
-  cardSuccessView = () => 'success'
+  cardSuccessView = () => (
+    <CardUlElement>
+      <Card />
+    </CardUlElement>
+  )
 
   cardInprogressView = () => <LoadingContainer>Inprogress</LoadingContainer>
 

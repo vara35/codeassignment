@@ -75,6 +75,41 @@ export const AcceptHeading = styled.h1`
   }
 `
 export const LoadingContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   text-align: center;
+  height: 30vh;
+`
+
+export const FailureContainer = styled.div`
+  width: 100%;
+  text-align: center;
+`
+
+export const FailureImage = styled.img`
+  width: 60%;
+  border-radius: 8px;
+  max-width: 600px;
+`
+export const SomethingWrongHeading = styled.h2`
+  font-size: 15px;
+  font-family: 'Roboto';
+  text-align: center;
+  font-weight: 300px;
+`
+export const RetryButton = styled.button`
+  background-color: #0b69ff;
+  color: #ffffff;
+  padding: 4px;
+  width: 80px;
+  border: 0;
+  border-radius: 8px;
+`
+
+export const CardUlElement = styled.ul`
+  width: 100%;
+  padding-left: 20px;
+  padding-right: 20px;
 `
