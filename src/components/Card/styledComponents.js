@@ -1,11 +1,18 @@
 import styled from 'styled-components'
 
 export const CardListElement = styled.li`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
   width: 100%;
   list-style-type: none;
   background-color: #ffffff;
   border-radius: 10px;
+  border: 1px solid #dedede;
   padding: 14px;
+  margin-top: 10px;
+  margin-right: 10px;
+  min-height: 200px;
   @media screen and (min-width: 767px) {
     width: 31%;
     max-width: 250px;
@@ -93,4 +100,5 @@ export const ApproveButton = styled.button`
   background-color: #0b69ff;
   border: 0;
   border-radius: 6px;
+  cursor: pointer;
 `

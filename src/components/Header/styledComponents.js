@@ -33,7 +33,7 @@ export const WriteButton = styled.button`
 export const IconInputContainer = styled.div`
   display: flex;
   align-items: center;
-  border: 1px solid;
+  border: 1px solid #dedede;
   border-radius: 4px;
   width: 70%;
   margin-left: 20px;

@@ -15,7 +15,7 @@ export const LeftMenuContainer = styled.div`
   @media screen and (min-width: 767px) {
     width: 25%;
     max-width: 250px;
-    border-right: 1px solid grey;
+    border-right: 1px solid #dedede;
   }
 `
 
@@ -67,7 +67,7 @@ export const YourPostContainer = styled.div`
 
 export const HorizontalLIne = styled.hr`
   width: 100%;
-  color: grey;
+  color: #dedede;
 `
 export const AcceptHeading = styled.h1`
   width: 240px;
@@ -92,6 +92,7 @@ export const LoadingContainer = styled.div`
   width: 100%;
   text-align: center;
   height: 30vh;
+  color: #248cbd;
 `
 
 export const FailureContainer = styled.div`
@@ -120,6 +121,8 @@ export const RetryButton = styled.button`
 `
 
 export const CardUlElement = styled.ul`
+  display: flex;
+  flex-wrap: wrap;
   width: 100%;
   padding-left: 20px;
   padding-right: 20px;

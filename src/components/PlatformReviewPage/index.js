@@ -71,11 +71,15 @@ const componentApiStatus = {
 }
 
 class PlatformReviewPage extends Component {
-  state = {cardApiStatus: componentApiStatus.success, switchStatus: true}
+  state = {
+    cardApiStatus: componentApiStatus.success,
+    switchStatus: true,
+    cardData: [],
+  }
 
-  //   componentDidMount() {
-  //     this.getUserData()
-  //   }
+  componentDidMount() {
+    this.getUserData()
+  }
 
   getUserData = async () => {
     this.setState({cardApiStatus: componentApiStatus.inprogress})
@@ -84,10 +88,32 @@ class PlatformReviewPage extends Component {
       'https://y5764x56r9.execute-api.ap-south-1.amazonaws.com/mockAPI/posts'
     const options = {
       method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
     }
     const response = await fetch(Url, options)
     const data = await response.json()
-    console.log(response)
+    if (response.ok === true) {
+      const updatedData = data.map(eachItem => ({
+        commentsCount: eachItem.comments_count,
+        postContent: eachItem.post_content,
+        postId: eachItem.post_id,
+        postedAt: eachItem.posted_at,
+        profilePic: eachItem.posted_by.profile_pic,
+        userId: eachItem.posted_by.user_id,
+        userName: eachItem.posted_by.username,
+        title: eachItem.title,
+      }))
+      this.setState({
+        cardData: updatedData,
+        cardApiStatus: componentApiStatus.success,
+      })
+    } else {
+      this.setState({
+        cardApiStatus: componentApiStatus.failure,
+      })
+    }
   }
 
   changeSwitchStatus = () => {
@@ -102,13 +128,18 @@ class PlatformReviewPage extends Component {
     </FailureContainer>
   )
 
-  cardSuccessView = () => (
-    <CardUlElement>
-      <Card />
-    </CardUlElement>
-  )
+  cardSuccessView = () => {
+    const {cardData} = this.state
+    return (
+      <CardUlElement>
+        {cardData.map(eachCard => (
+          <Card key={eachCard.postId} cardItem={eachCard} />
+        ))}
+      </CardUlElement>
+    )
+  }
 
-  cardInprogressView = () => <LoadingContainer>Inprogress</LoadingContainer>
+  cardInprogressView = () => <LoadingContainer>Loading...</LoadingContainer>
 
   showCardsFunction = () => {
     const {cardApiStatus} = this.state
@@ -160,7 +191,7 @@ class PlatformReviewPage extends Component {
   )
 
   render() {
-    const {switchStatus} = this.state
+    const {switchStatus, cardData} = this.state
     return (
       <PlatformReviewMainContainer>
         {this.showLeftMenuContainer()}
@@ -174,7 +205,11 @@ class PlatformReviewPage extends Component {
             </SwitchComponentButton>
           </SwitchContainer>
           {switchStatus ? <AcceptHeading>Accept Request</AcceptHeading> : null}
-          {switchStatus ? this.showCardsFunction() : <ReportingPortal />}
+          {switchStatus ? (
+            this.showCardsFunction()
+          ) : (
+            <ReportingPortal cardData={cardData} />
+          )}
         </CardContainer>
       </PlatformReviewMainContainer>
     )

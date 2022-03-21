@@ -4,11 +4,13 @@ dependencies:
   '@testing-library/react': 11.2.5_react-dom@17.0.1+react@17.0.1
   '@testing-library/user-event': 12.6.2
   chalk: 4.1.0
+  cors: 2.8.5
   jest-styled-components: 7.0.5_styled-components@5.3.0
   react: 17.0.1
   react-dom: 17.0.1_react@17.0.1
   react-icons: 4.3.1_react@17.0.1
   react-loader-spinner: 6.0.0-0_react-dom@17.0.1+react@17.0.1
+  react-table: 7.7.0_react@17.0.1
   styled-components: 5.3.0_react-dom@17.0.1+react@17.0.1
   styled-components.macro: 1.0.0_styled-components@5.3.0
 devDependencies:
@@ -5120,6 +5122,15 @@ packages:
     dev: true
     resolution:
       integrity: sha512-ZQBvi1DcpJ4GDqanjucZ2Hj3wEO5pZDS89BWbkcrvdxksJorwUDDZamX9ldFkp9aw2lmBDLgkObEA4DWNJ9FYQ==
+  /cors/2.8.5:
+    dependencies:
+      object-assign: 4.1.1
+      vary: 1.1.2
+    dev: false
+    engines:
+      node: '>= 0.10'
+    resolution:
+      integrity: sha512-KIHbLJqu73RGr/hnbrO9uBeixNGuvSQjul/jdFvS/KFSIH1hWVd1ng7zOHx+YrEfInLG7q4n6GHQ9cDtxv/P6g==
   /cosmiconfig/5.2.1:
     dependencies:
       import-fresh: 2.0.0
@@ -11436,6 +11447,14 @@ packages:
         optional: true
     resolution:
       integrity: sha512-S5eO4vjUzUisvkIPB7jVsKtuH2HhWcASREYWHAQ1FP5HyCv3xgn+wpILAEWkmy+A+tTNbSZClhxjT3qz6g4L1A==
+  /react-table/7.7.0_react@17.0.1:
+    dependencies:
+      react: 17.0.1
+    dev: false
+    peerDependencies:
+      react: ^16.8.3 || ^17.0.0-0
+    resolution:
+      integrity: sha512-jBlj70iBwOTvvImsU9t01LjFjy4sXEtclBovl3mTiqjz23Reu0DKnRza4zlLtOPACx6j2/7MrQIthIK1Wi+LIA==
   /react/17.0.1:
     dependencies:
       loose-envify: 1.4.0
@@ -13417,7 +13436,6 @@ packages:
     resolution:
       integrity: sha512-DpKm2Ui/xN7/HQKCtpZxoRWBhZ9Z0kqtygG8XCgNQ8ZlDnxuQmWhj566j8fN4Cu3/JmbhsDo7fcAJq4s9h27Ew==
   /vary/1.1.2:
-    dev: true
     engines:
       node: '>= 0.8'
     resolution:
@@ -14015,6 +14033,7 @@ specifiers:
   '@testing-library/react': 11.2.5
   '@testing-library/user-event': 12.6.2
   chalk: 4.1.0
+  cors: 2.8.5
   eslint-config-airbnb: 18.2.1
   eslint-config-prettier: 8.1.0
   eslint-plugin-prettier: 3.3.1
@@ -14028,5 +14047,6 @@ specifiers:
   react-icons: 4.3.1
   react-loader-spinner: 6.0.0-0
   react-scripts: 4.0.3
+  react-table: 7.7.0
   styled-components: 5.3.0
   styled-components.macro: 1.0.0

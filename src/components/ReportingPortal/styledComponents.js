@@ -2,6 +2,8 @@ import styled from 'styled-components'
 
 export const PortalContainer = styled.div`
   width: 100%;
+  padding-left: 30px;
+  padding-right: 30px;
 `
 export const ObservationHeading = styled.h1`
   width: 500px;
@@ -14,5 +16,19 @@ export const ObservationHeading = styled.h1`
   line-height: 1.25;
   letter-spacing: normal;
   color: #0b69ff;
-  margin-left: 20px;
+`
+
+export const SwitchComponentButton = styled.button`
+  color: #ffffff;
+  background-color: blue;
+  border: 0;
+  border-radius: 6px;
+  font-size: 12px;
+  height: 25px;
+  width: 60px;
+  cursor: pointer;
+`
+export const SwitchContainer = styled.div`
+  text-align: right;
+  margin-right: 30px;
 `
