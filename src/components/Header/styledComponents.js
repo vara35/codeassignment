@@ -5,6 +5,7 @@ export const NavContainer = styled.nav`
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  padding-top:10px
   padding-left: 20px;
   padding-right: 20px;
 `
@@ -14,6 +15,7 @@ export const InputElement = styled.input`
   outline: none;
   width: 100%;
   padding: 8px;
+  flex-grow: 1;
 `
 
 export const WriteButton = styled.button`
@@ -33,6 +35,9 @@ export const IconInputContainer = styled.div`
   align-items: center;
   border: 1px solid;
   border-radius: 4px;
+  width: 70%;
+  margin-left: 20px;
+  padding-left: 10px;
 `
 
 export const ButtonImageContainer = styled.div`

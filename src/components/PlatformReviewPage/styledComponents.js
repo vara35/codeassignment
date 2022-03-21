@@ -3,15 +3,25 @@ import styled from 'styled-components'
 export const PlatformReviewMainContainer = styled.div`
   background-color: #fbfbfb;
   min-height: 100vh;
+  @media screen and (min-width: 767px) {
+    display: flex;
+  }
 `
 
 export const LeftMenuContainer = styled.div`
   width: 100%;
   padding: 20px;
+
+  @media screen and (min-width: 767px) {
+    width: 25%;
+    max-width: 250px;
+    border-right: 1px solid grey;
+  }
 `
 
 export const CardContainer = styled.div`
   width: 100%;
+  background-color: #fbfbfb;
 `
 export const LeftContainerLogo = styled.img`
   height: 60px;
@@ -57,6 +67,7 @@ export const YourPostContainer = styled.div`
 
 export const HorizontalLIne = styled.hr`
   width: 100%;
+  color: grey;
 `
 export const AcceptHeading = styled.h1`
   width: 240px;
