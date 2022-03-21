@@ -5,6 +5,7 @@ import Card from '../Card'
 import FollowingDomain from '../FollowingDomains'
 import SuggestDomains from '../SuggestDomains'
 import Header from '../Header'
+import ReportingPortal from '../ReportingPortal'
 
 import {
   PlatformReviewMainContainer,
@@ -25,6 +26,8 @@ import {
   SomethingWrongHeading,
   RetryButton,
   CardUlElement,
+  SwitchComponentButton,
+  SwitchContainer,
 } from './styledComponents'
 
 const DomainNames = [
@@ -68,7 +71,7 @@ const componentApiStatus = {
 }
 
 class PlatformReviewPage extends Component {
-  state = {cardApiStatus: componentApiStatus.success}
+  state = {cardApiStatus: componentApiStatus.success, switchStatus: true}
 
   //   componentDidMount() {
   //     this.getUserData()
@@ -85,6 +88,10 @@ class PlatformReviewPage extends Component {
     const response = await fetch(Url, options)
     const data = await response.json()
     console.log(response)
+  }
+
+  changeSwitchStatus = () => {
+    this.setState(prevState => ({switchStatus: !prevState.switchStatus}))
   }
 
   cardFailureView = () => (
@@ -153,14 +160,21 @@ class PlatformReviewPage extends Component {
   )
 
   render() {
+    const {switchStatus} = this.state
     return (
       <PlatformReviewMainContainer>
         {this.showLeftMenuContainer()}
+
         <CardContainer>
           <Header />
           <HorizontalLIne />
-          <AcceptHeading>Accept Request</AcceptHeading>
-          {this.showCardsFunction()}
+          <SwitchContainer>
+            <SwitchComponentButton onClick={this.changeSwitchStatus}>
+              Switch
+            </SwitchComponentButton>
+          </SwitchContainer>
+          {switchStatus ? <AcceptHeading>Accept Request</AcceptHeading> : null}
+          {switchStatus ? this.showCardsFunction() : <ReportingPortal />}
         </CardContainer>
       </PlatformReviewMainContainer>
     )

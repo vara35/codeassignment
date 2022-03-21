@@ -5,7 +5,7 @@ export const NavContainer = styled.nav`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  padding-top:10px
+  padding-top:20px
   padding-left: 20px;
   padding-right: 20px;
 `
@@ -47,5 +47,6 @@ export const ButtonImageContainer = styled.div`
 export const HeaderImage = styled.img`
   border-radius: 10px;
   height: 40px;
-  width: 55px;
+  width: 50px;
+  margin-left: 8px;
 `

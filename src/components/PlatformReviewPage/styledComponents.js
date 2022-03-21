@@ -124,3 +124,17 @@ export const CardUlElement = styled.ul`
   padding-left: 20px;
   padding-right: 20px;
 `
+export const SwitchComponentButton = styled.button`
+  color: #ffffff;
+  background-color: blue;
+  border: 0;
+  border-radius: 6px;
+  font-size: 12px;
+  height: 25px;
+  width: 60px;
+  cursor: pointer;
+`
+export const SwitchContainer = styled.div`
+  text-align: right;
+  margin-right: 30px;
+`
