@@ -73,7 +73,10 @@ export const MessageImage = styled.img`
   width: 30px;
 `
 export const CardImage = styled.img`
-  width: 30px;
+  width: 35px;
+  height: 32px;
+  border-radius: 20px;
+  border: 0;
 `
 export const UserName = styled.h3`
   color: #7e858e;
@@ -97,7 +100,7 @@ export const ApproveButton = styled.button`
   line-height: 1.71;
   letter-spacing: normal;
   color: white;
-  background-color: #0b69ff;
+  background-color: ${props => (props.addBgColor ? '#2dca73' : '#0b69ff')};
   border: 0;
   border-radius: 6px;
   cursor: pointer;

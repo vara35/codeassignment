@@ -12,14 +12,26 @@ import {
 } from './styledComponents'
 
 const Card = props => {
-  const {cardItem} = props
-  const {title, userName, profilePic, commentsCount} = cardItem
+  const {cardItem, updateUser} = props
+  const {
+    title,
+    userName,
+    profilePic,
+    commentsCount,
+    userId,
+    isApproved,
+    postId,
+  } = cardItem
+
+  const updateApprove = () => {
+    updateUser(userName, userId, postId)
+  }
 
   return (
     <CardListElement>
       <CardHeading>{title}</CardHeading>
       <CardDescription>
-        IS SIMPLICITY A real thing? Or is design the pursuit of....
+        IS SIMPLICITY A real thing? Or is design the pursuit of....{' '}
       </CardDescription>
       <MessagesCountContainer>
         <SpanAndMessageContainer>
@@ -33,10 +45,18 @@ const Card = props => {
       </MessagesCountContainer>
       <MessagesCountContainer>
         <SpanAndMessageContainer>
-          <CardImage src={profilePic} />
+          <CardImage src={profilePic} alt="profile" />
           <UserName>{userName}</UserName>
         </SpanAndMessageContainer>
-        <ApproveButton>Approve</ApproveButton>
+        {isApproved ? (
+          <ApproveButton type="button" onClick={updateApprove} addBgColor>
+            Success
+          </ApproveButton>
+        ) : (
+          <ApproveButton type="button" onClick={updateApprove}>
+            Approve
+          </ApproveButton>
+        )}
       </MessagesCountContainer>
     </CardListElement>
   )

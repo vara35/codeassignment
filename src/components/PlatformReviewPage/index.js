@@ -1,5 +1,4 @@
 import {Component} from 'react'
-import Loader from 'react-loader-spinner'
 
 import Card from '../Card'
 import FollowingDomain from '../FollowingDomains'
@@ -104,6 +103,7 @@ class PlatformReviewPage extends Component {
         userId: eachItem.posted_by.user_id,
         userName: eachItem.posted_by.username,
         title: eachItem.title,
+        isApproved: false,
       }))
       this.setState({
         cardData: updatedData,
@@ -113,6 +113,31 @@ class PlatformReviewPage extends Component {
       this.setState({
         cardApiStatus: componentApiStatus.failure,
       })
+    }
+  }
+
+  updateUser = async (name, userId, postId) => {
+    const {cardData} = this.state
+    console.log(cardData)
+    const Url =
+      'https://y5764x56r9.execute-api.ap-south-1.amazonaws.com/mockAPI/posts'
+    const userDetails = {username: name, userId}
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(userDetails),
+    }
+    const response1 = await fetch(Url, options)
+    if (response1.ok) {
+      const modifyData = cardData.map(eachItem => {
+        if (eachItem.postId === postId) {
+          return {...eachItem, isApproved: !eachItem.isApproved}
+        }
+        return eachItem
+      })
+      this.setState({cardData: modifyData})
     }
   }
 
@@ -133,7 +158,11 @@ class PlatformReviewPage extends Component {
     return (
       <CardUlElement>
         {cardData.map(eachCard => (
-          <Card key={eachCard.postId} cardItem={eachCard} />
+          <Card
+            key={eachCard.postId}
+            cardItem={eachCard}
+            updateUser={this.updateUser}
+          />
         ))}
       </CardUlElement>
     )
