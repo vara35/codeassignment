@@ -52,18 +52,6 @@ export const MenuUlElement = styled.ul`
   width: 100%;
   padding-left: 0;
 `
-export const SpanElement = styled.span`
-  display: flex;
-  justify-content: center;
-  color: #0b69ff;
-  background-color: grey;
-  border-radius: 20px;
-  width: 20px;
-`
-export const YourPostContainer = styled.div`
-  display: flex;
-  align-items: center;
-`
 
 export const HorizontalLIne = styled.hr`
   width: 100%;
