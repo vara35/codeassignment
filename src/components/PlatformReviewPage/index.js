@@ -3,13 +3,13 @@ import {Component} from 'react'
 import Card from '../Card'
 import Header from '../Header'
 import LeftMenu from '../LeftMenu'
+import SwitchButton from '../SwitchButton'
 
 import ReportingPortal from '../ReportingPortal'
 
 import {
   PlatformReviewMainContainer,
   CardContainer,
-  HorizontalLIne,
   AcceptHeading,
   LoadingContainer,
   FailureContainer,
@@ -17,8 +17,6 @@ import {
   SomethingWrongHeading,
   RetryButton,
   CardUlElement,
-  SwitchComponentButton,
-  SwitchContainer,
 } from './styledComponents'
 
 const componentApiStatus = {
@@ -30,7 +28,7 @@ const componentApiStatus = {
 
 class PlatformReviewPage extends Component {
   state = {
-    cardApiStatus: componentApiStatus.success,
+    cardApiStatus: componentApiStatus.initial,
     switchStatus: true,
     cardData: [],
   }
@@ -62,6 +60,8 @@ class PlatformReviewPage extends Component {
         userId: eachItem.posted_by.user_id,
         userName: eachItem.posted_by.username,
         title: eachItem.title,
+        tag1: eachItem.tags.length > 0 ? eachItem.tags[0].tag_name : null,
+        tag2: eachItem.tags.length > 0 ? eachItem.tags[1].tag_name : null,
         isApproved: false,
       }))
       this.setState({
@@ -91,7 +91,7 @@ class PlatformReviewPage extends Component {
     if (response1.ok) {
       const modifyData = cardData.map(eachItem => {
         if (eachItem.postId === postId) {
-          return {...eachItem, isApproved: !eachItem.isApproved}
+          return {...eachItem, isApproved: true}
         }
         return eachItem
       })
@@ -154,22 +154,22 @@ class PlatformReviewPage extends Component {
     const {switchStatus, cardData} = this.state
     return (
       <PlatformReviewMainContainer>
-        {this.showLeftMenuContainer()}
-        <CardContainer>
-          <Header />
-          <HorizontalLIne />
-          <SwitchContainer>
-            <SwitchComponentButton onClick={this.changeSwitchStatus}>
-              Switch
-            </SwitchComponentButton>
-          </SwitchContainer>
-          {switchStatus ? <AcceptHeading>Accept Request</AcceptHeading> : null}
-          {switchStatus ? (
-            this.showCardsFunction()
-          ) : (
-            <ReportingPortal cardData={cardData} />
-          )}
-        </CardContainer>
+        {switchStatus && this.showLeftMenuContainer()}
+        {switchStatus ? (
+          <CardContainer>
+            <Header />
+            <SwitchButton changeSwitchStatus={this.changeSwitchStatus} />
+            {switchStatus ? (
+              <AcceptHeading>Accept Request</AcceptHeading>
+            ) : null}
+            {this.showCardsFunction()}
+          </CardContainer>
+        ) : (
+          <ReportingPortal
+            cardData={cardData}
+            changeSwitchStatus={this.changeSwitchStatus}
+          />
+        )}
       </PlatformReviewMainContainer>
     )
   }

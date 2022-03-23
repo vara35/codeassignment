@@ -1,14 +1,16 @@
+import Profile from '../Profile'
+
 import {
   CardListElement,
   CardHeading,
   CardDescription,
-  SpanAndMessageContainer,
   SpanContainer,
   MessageImage,
+  EllipseContainer,
   MessagesCountContainer,
-  CardImage,
-  UserName,
+  SpanAndMessageContainer,
   ApproveButton,
+  ApprovedText,
 } from './styledComponents'
 
 const Card = props => {
@@ -21,22 +23,29 @@ const Card = props => {
     userId,
     isApproved,
     postId,
+    postContent,
+    tag1,
+    tag2,
   } = cardItem
 
   const updateApprove = () => {
     updateUser(userName, userId, postId)
   }
 
+  const content =
+    postContent.length > 6
+      ? postContent.slice(0, 60)
+      : 'IS SIMPLICITY A real thing? Or is design the pursuit of'
+
   return (
     <CardListElement>
       <CardHeading>{title}</CardHeading>
-      <CardDescription>
-        IS SIMPLICITY A real thing? Or is design the pursuit of....{' '}
-      </CardDescription>
+      {tag1 && <EllipseContainer>...</EllipseContainer>}
+      <CardDescription>{`${content}...`}</CardDescription>
       <MessagesCountContainer>
         <SpanAndMessageContainer>
-          <SpanContainer>uidiscuss</SpanContainer>
-          <SpanContainer addColor>teamui</SpanContainer>
+          {tag1 && <SpanContainer>{tag1}</SpanContainer>}
+          {tag2 && <SpanContainer addColor>{tag2}</SpanContainer>}
         </SpanAndMessageContainer>
         <SpanAndMessageContainer>
           <MessageImage src="https://res.cloudinary.com/image-link-getter/image/upload/v1647833163/Screenshot_2022-03-21_085542_lioglp.png" />
@@ -44,18 +53,11 @@ const Card = props => {
         </SpanAndMessageContainer>
       </MessagesCountContainer>
       <MessagesCountContainer>
-        <SpanAndMessageContainer>
-          <CardImage src={profilePic} alt="profile" />
-          <UserName>{userName}</UserName>
-        </SpanAndMessageContainer>
+        <Profile profilePic={profilePic} userName={userName} />
         {isApproved ? (
-          <ApproveButton type="button" onClick={updateApprove} addBgColor>
-            Success
-          </ApproveButton>
+          <ApprovedText>Approved</ApprovedText>
         ) : (
-          <ApproveButton type="button" onClick={updateApprove}>
-            Approve
-          </ApproveButton>
+          <ApproveButton onClick={updateApprove}>Approve</ApproveButton>
         )}
       </MessagesCountContainer>
     </CardListElement>

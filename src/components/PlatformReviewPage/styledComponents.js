@@ -1,16 +1,20 @@
 import styled from 'styled-components'
 
 export const PlatformReviewMainContainer = styled.div`
+  min-height: 1024px;
   background-color: #fbfbfb;
-  min-height: 100vh;
   @media screen and (min-width: 767px) {
     display: flex;
   }
 `
 
 export const LeftMenuContainer = styled.div`
-  width: 100%;
-  padding: 20px;
+  width: 240px;
+  height: 1024px;
+  margin: 0 48px 0 0;
+  padding: 12px 1px 235px;
+  border: solid 1px #d7dfe9;
+  background-color: var(--white);
 
   @media screen and (min-width: 767px) {
     width: 25%;
@@ -24,7 +28,10 @@ export const CardContainer = styled.div`
   background-color: #fbfbfb;
 `
 export const LeftContainerLogo = styled.img`
-  height: 60px;
+  width: 48px;
+  height: 48px;
+  margin: 0 95px 29px 23px;
+  object-fit: contain;
 `
 export const AllDomainDescription = styled.p`
   font-family: 'Roboto';
@@ -53,24 +60,30 @@ export const MenuUlElement = styled.ul`
   padding-left: 0;
 `
 
-export const HorizontalLIne = styled.hr`
-  width: 100%;
-  color: #dedede;
-`
 export const AcceptHeading = styled.h1`
   width: 240px;
   height: 40px;
-  font-family: 'Roboto';
-  font-size: 20px;
+  padding-left: 20px;
+  font-family: 'HKGrotesk';
+  font-size: 25px;
   font-weight: normal;
   font-stretch: normal;
   font-style: normal;
-  line-height: 0.6;
+  line-height: 1.25;
   letter-spacing: normal;
-  color: var(--dark-blue-grey);
-  margin-left: 20px;
+  color: #171f46;
   @media screen and (min-width: 767px) {
+    width: 240px;
+    height: 40px;
+    margin: 24px 128px 16px 48px;
+    font-family: 'HKGrotesk';
     font-size: 32px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.25;
+    letter-spacing: normal;
+    color: #171f46;
   }
 `
 export const LoadingContainer = styled.div`
@@ -106,6 +119,7 @@ export const RetryButton = styled.button`
   width: 80px;
   border: 0;
   border-radius: 8px;
+  cursor: pointer;
 `
 
 export const CardUlElement = styled.ul`
@@ -114,18 +128,4 @@ export const CardUlElement = styled.ul`
   width: 100%;
   padding-left: 20px;
   padding-right: 20px;
-`
-export const SwitchComponentButton = styled.button`
-  color: #ffffff;
-  background-color: blue;
-  border: 0;
-  border-radius: 6px;
-  font-size: 12px;
-  height: 25px;
-  width: 60px;
-  cursor: pointer;
-`
-export const SwitchContainer = styled.div`
-  text-align: right;
-  margin-right: 30px;
 `

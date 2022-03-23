@@ -4,40 +4,71 @@ export const NavContainer = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  height: 30px;
   width: 100%;
-  padding-top:20px
-  padding-left: 20px;
-  padding-right: 20px;
+  padding: 8px 15px;
+  background-color: #ffffff;
+  @media screen and (min-width: 767px) {
+    height: 50px;
+    border: solid 1px #d7dfe9;
+    padding: 13px 78px 12px 49px;
+    padding: 13px 78px 12px 49px;
+  }
 `
 export const InputElement = styled.input`
-  height: 24px;
-  border: 0;
-  outline: none;
-  width: 100%;
-  padding: 8px;
+  width: 70%;
+  height: 30px;
+  color: #ffffff;
+  font-size: 14px;
+  border-radius: 3px;
+  border: solid 1px #d7dfe9;
+  background-color: #ffffff;
   flex-grow: 1;
+  @media screen and (min-width: 767px) {
+    width: 648px;
+    height: 40px;
+    color: #ffffff;
+    margin: 4px 224px 4px 0;
+    padding: 8px 556px 8px 16px;
+  }
 `
 
 export const WriteButton = styled.button`
-  min-width: 60px;
-  height: 24px;
+  width: 80px;
+  height: 30px;
+  font-family: 'HKGrotesk';
+  font-size: 12px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.71;
+  letter-spacing: normal;
   border-radius: 4px;
-  font-size: 10px;
-  border-radius: 6px;
-  color: #ffffff;
-  font-family: 'Roboto';
   border: 0;
+  color: #ffffff;
   background-color: #0b69ff;
-  margin-left: 10px;
+  @media screen and (min-width: 767px) {
+    width: 106px;
+    height: 40px;
+    line-height: 1.71;
+    letter-spacing: normal;
+  }
 `
 export const IconInputContainer = styled.div`
   display: flex;
   align-items: center;
-  border: 1px solid #dedede;
-  border-radius: 4px;
-  width: 70%;
-  margin-left: 20px;
-  padding-left: 10px;
+  width: 50%;
+  height: 30px;
+  border-radius: 3px;
+  border: solid 1px #d7dfe9;
+  @media screen and (min-width: 767px) {
+    width: 648px;
+    height: 40px;
+    margin: 4px 224px 4px 0;
+    padding: 8px 556px 8px 16px;
+    border-radius: 3px;
+    border: 0;
+  }
 `
 
 export const ButtonImageContainer = styled.div`

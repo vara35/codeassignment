@@ -4,50 +4,62 @@ export const CardListElement = styled.li`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  width: 100%;
   list-style-type: none;
+  width: 100%;
+  height: 371px;
+  margin: 16px 32px 32px;
+  padding: 16px 16px 24px;
+  border-radius: 4px;
+  border: solid 1px #d7dfe9;
   background-color: #ffffff;
-  border-radius: 10px;
-  border: 1px solid #dedede;
-  padding: 14px;
-  margin-top: 10px;
-  margin-right: 10px;
-  min-height: 200px;
+
   @media screen and (min-width: 767px) {
-    width: 31%;
-    max-width: 250px;
+    width: 300px;
+    height: 371px;
+    margin: 16px 32px 32px;
+    padding: 16px 16px 24px;
   }
 `
+export const SpanAndMessageContainer = styled.div`
+  display: flex;
+  align-items: center;
+`
+
+export const EllipseContainer = styled.div`
+  text-align: right;
+  height: 5px;
+`
+
 export const CardHeading = styled.h2`
-  width: 153px;
-  font-family: 'Roboto';
-  font-size: 14px;
-  font-weight: bold;
+  width: 183px;
+  height: 160px;
+  font-family: 'HKGrotesk';
+  font-size: 18px;
+  font-weight: 600;
   font-stretch: normal;
   font-style: normal;
-  line-height: 1.6;
+  margin: 0 28px 24px 0;
+  line-height: 1.3;
   letter-spacing: normal;
-  color: var(--dark-blue-grey);
+  color: #171f46;
 `
 export const CardDescription = styled.p`
   width:240px
-  font-family: 'Roboto';
-  font-size: 13px;
+    height: 48px;
+  font-family: "HKGrotesk";
+  font-size: 14px;
   font-weight: normal;
   font-stretch: normal;
   font-style: normal;
   line-height: 1.71;
   letter-spacing: normal;
-  color: var(--dark-blue-grey);
+  color: #171f46;
+  margin-top:20px;
 `
 
 export const MessagesCountContainer = styled.div`
   display: flex;
   justify-content: space-between;
-  align-items: center;
-`
-export const SpanAndMessageContainer = styled.div`
-  display: flex;
   align-items: center;
 `
 
@@ -72,36 +84,37 @@ export const SpanContainer = styled.span`
 export const MessageImage = styled.img`
   width: 30px;
 `
-export const CardImage = styled.img`
-  width: 35px;
-  height: 32px;
-  border-radius: 20px;
-  border: 0;
-`
-export const UserName = styled.h3`
-  color: #7e858e;
-  font-family: 'HKGrotesk';
-  font-size: 12px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  margin-left: 8px;
-  line-height: 1.71;
-  letter-spacing: normal;
-`
+
 export const ApproveButton = styled.button`
-  width: 60px;
-  height: 24px;
-  font-family: 'Roboto';
-  font-size: 12px;
-  font-weight: 400;
+  width: 93px;
+  height: 40px;
+  margin: 24px 0 0 58px;
+  padding: 8px 20px;
+  border-radius: 4px;
+  background-color: #0b69ff;
+  font-family: 'HKGrotesk';
+  font-size: 14px;
+  font-weight: 600;
   font-stretch: normal;
   font-style: normal;
   line-height: 1.71;
   letter-spacing: normal;
-  color: white;
-  background-color: ${props => (props.addBgColor ? '#2dca73' : '#0b69ff')};
-  border: 0;
-  border-radius: 6px;
+  color: #ffffff;
   cursor: pointer;
+  border: 0;
+`
+export const ApprovedText = styled.p`
+  width: 93px;
+  height: 40px;
+  margin: 24px 0 0 58px;
+  padding: 8px 20px;
+  border-radius: 4px;
+  font-family: 'HKGrotesk';
+  font-size: 14px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.71;
+  letter-spacing: normal;
+  color: #2dca73;
 `

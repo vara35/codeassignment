@@ -6,9 +6,10 @@ export const PortalContainer = styled.div`
   padding-right: 30px;
 `
 export const ObservationHeading = styled.h1`
-  width: 500px;
+  width: 425px;
   height: 40px;
-  font-family: 'Roboto';
+  margin: 48px 87px 10px 100px;
+  font-family: 'HKGrotesk';
   font-size: 32px;
   font-weight: 500;
   font-stretch: normal;
@@ -31,4 +32,23 @@ export const SwitchComponentButton = styled.button`
 export const SwitchContainer = styled.div`
   text-align: right;
   margin-right: 30px;
+`
+export const FilterContainer = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+`
+
+export const FilterText = styled.p`
+  width: 40px;
+  height: 16px;
+  margin: 24px 104px 24px 8px;
+  font-family: 'HKGrotesk';
+  font-size: 12px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.33;
+  letter-spacing: 0.12px;
+  color: #171f46;
 `

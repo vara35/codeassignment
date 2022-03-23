@@ -15,7 +15,7 @@ export const ListDescription = styled.p`
   font-style: normal;
   line-height: 0.1;
   letter-spacing: normal;
-  color: var(--dark-blue-grey);
+  color: #171f46 ;
   margin-top:0;
 }
 `

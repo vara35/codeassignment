@@ -13,7 +13,7 @@ const Header = () => (
   <NavContainer>
     <IconInputContainer>
       <BiSearchAlt2 />
-      <InputElement type="search" placeholder="search" />
+      <InputElement type="search" placeholder="Search" />
     </IconInputContainer>
     <ButtonImageContainer>
       <WriteButton type="button">Write Post</WriteButton>
