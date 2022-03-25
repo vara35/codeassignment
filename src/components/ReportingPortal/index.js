@@ -2,7 +2,8 @@ import {useTable} from 'react-table'
 import React from 'react'
 import {BsFilter} from 'react-icons/bs'
 
-import Header from '../Header'
+import Profile from '../Profile'
+import MessageImage from '../MessageImage'
 import SwitchButton from '../SwitchButton'
 
 import {
@@ -13,95 +14,21 @@ import {
 } from './styledComponents'
 
 const ReportingPortal = props => {
-  const {cardData, changeSwitchStatus} = props
-  const data = React.useMemo(
-    () => [
-      {
-        ...cardData[0],
-        col4: 'High',
-        col5: 'ACTION IN PROGRESS',
-        col6: '17/5/2020 at 05:30 PM',
-        col7: 'Hello',
-      },
-      {
-        ...cardData[1],
-        col4: 'Low',
-        col5: 'CLOSED',
-        col6: '17/5/2020 at 05:30 PM',
-        col7: 'Hello',
-      },
-      {
-        ...cardData[2],
-        col4: 'Warning',
-        col5: 'RESOLVE',
-        col6: '17/5/2020 at 05:30 PM',
-        col7: 'Hello',
-      },
-      {
-        ...cardData[3],
-        col4: 'Low',
-        col5: 'CLOSED',
-        col6: '17/5/2020 at 05:30 PM',
-        col7: 'Hello',
-      },
-      {
-        ...cardData[4],
-        col4: 'Warning',
-        col5: 'ACTION IN PROGRESS',
-        col6: '17/5/2020 at 05:30 PM',
-        col7: 'Hello',
-      },
-      {
-        ...cardData[5],
-        col4: 'High',
-        col5: 'CLOSED',
-        col6: '17/5/2020 at 05:30 PM',
-        col7: 'Hello',
-      },
-      {
-        ...cardData[6],
-        col4: 'High',
-        col5: 'REPORTED',
-        col6: '17/5/2020 at 05:30 PM',
-        col7: 'Hello',
-      },
-      {
-        ...cardData[7],
-        col4: 'Low',
-        col5: 'CLOSED',
-        col6: '17/5/2020 at 05:30 PM',
-        col7: 'Hello',
-      },
-      {
-        ...cardData[8],
-        col4: 'High',
-        col5: 'REPORTED',
-        col6: '17/5/2020 at 05:30 PM',
-        col7: 'Hello',
-      },
-      {
-        ...cardData[9],
-        col4: 'Low',
-        col5: 'CLOSED',
-        col6: '17/5/2020 at 05:30 PM',
-        col7: 'Hello',
-      },
-      {
-        ...cardData[10],
-        col4: 'Warning',
-        col5: 'ACTION IN PROGRESS',
-        col6: '17/5/2020 at 05:30 PM',
-        col7: 'Hello',
-      },
-    ],
-    [cardData],
-  )
+  const {cardData, changePortalSwitchStatus} = props
+  const data = React.useMemo(() => [...cardData], [cardData])
 
   const columns = React.useMemo(
     () => [
       {
         Header: 'TITTLE',
         accessor: 'title',
+        Cell: cellProps => {
+          const {row} = cellProps
+          const {original} = row
+          const {title} = original
+          const slicedTitle = title.slice(0, 30)
+          return slicedTitle
+        },
       },
       {
         Header: 'REPORTED ON',
@@ -110,22 +37,57 @@ const ReportingPortal = props => {
       {
         Header: 'REPORTED BY',
         accessor: 'userName',
+        Cell: cellProps => {
+          const {row} = cellProps
+          const {original} = row
+          const {profilePic, userName} = original
+          return <Profile profilePic={profilePic} userName={userName} />
+        },
       },
       {
         Header: 'SEVERTY',
         accessor: 'col4',
+        Cell: () => (
+          <button
+            type="button"
+            style={{
+              width: '64px',
+              height: '16px',
+              fontFamily: 'HKGrotesk',
+              fontSize: '12px',
+              fontWeight: 'bold',
+              fontStretch: 'normal',
+              fontStyle: 'normal',
+              lineHeight: '1.33',
+              backgroundColor: '#ff0b37',
+              color: '#ffffff',
+              border: 0,
+              borderRadius: '6px',
+            }}
+          >
+            HIGH
+          </button>
+        ),
       },
       {
         Header: 'STATUS',
         accessor: 'col5',
+        Cell: 'Closed',
       },
       {
         Header: 'DUE DATE',
         accessor: 'col6',
+        Cell: '17/5/2020 at 05:30 PM',
       },
       {
         Header: 'MESSAGES',
         accessor: 'commentsCount',
+        Cell: cellProps => {
+          const {row} = cellProps
+          const {original} = row
+          const {commentsCount} = original
+          return <MessageImage commentsCount={commentsCount} />
+        },
       },
     ],
     [],
@@ -140,12 +102,11 @@ const ReportingPortal = props => {
   } = useTable({columns, data})
 
   const changeSwitchStatusFromPortal = () => {
-    changeSwitchStatus()
+    changePortalSwitchStatus()
   }
 
   return (
     <PortalContainer>
-      <Header />
       <SwitchButton changeSwitchStatus={changeSwitchStatusFromPortal} />
       <ObservationHeading>Observations Assigned To Me</ObservationHeading>
       <FilterContainer>
@@ -154,25 +115,38 @@ const ReportingPortal = props => {
       </FilterContainer>
       <table
         {...getTableProps()}
-        style={{border: '1px solid #d7dfe9', margin: '1px 100px 1px 100px'}}
+        style={{
+          height: '66px',
+          margin: ' 24px 100px 0',
+          border: 'solid 1px  #d7dfe9',
+          marginBottom: '30px',
+        }}
       >
         <thead>
           {headerGroups.map(headerGroup => (
             <tr
               {...headerGroup.getHeaderGroupProps()}
               style={{
-                margin: '24px 100px 0',
-                padding: '24px 34px 23px 68px',
-                backgroundColor: '#ffffff',
-                borderBottom: 'solid 1px #d7dfe9',
                 width: '33px',
-                height: '50px',
+                height: '16px',
+                margin: '1px 125px 0 0',
                 fontFamily: 'HKGrotesk',
                 fontSize: '12px',
+                fontWeight: '600',
+                fontStretch: 'normal',
+                fontStyle: 'normal',
+                lineHeight: '1.33',
+                letterSpacing: '0.12px',
               }}
             >
               {headerGroup.headers.map(column => (
-                <th {...column.getHeaderProps()} style={{}}>
+                <th
+                  {...column.getHeaderProps()}
+                  style={{
+                    padding: '10px',
+                    borderBottom: 'solid 2px #d7dfe9',
+                  }}
+                >
                   {column.render('Header')}
                 </th>
               ))}
@@ -189,22 +163,18 @@ const ReportingPortal = props => {
                     {...cell.getCellProps()}
                     style={{
                       borderBottom: 'solid 1px #d7dfe9',
-                      backgroundColor: '#ffffff',
-                      height: '64px',
+                      height: '16px',
                       fontFamily: 'HKGrotesk',
-                      fontSize: '16px',
+                      fontSize: '13.5px',
                       fontWeight: '600',
                       fontStretch: 'normal',
                       fontStyle: 'normal',
                       lineHeight: '1.33',
                       letterSpacing: '0.12px',
-                      color: '#171f46',
-                      padding: '20px',
+                      color: '#7e858e',
+                      padding: '10px 20px 10px 20px',
                     }}
                   >
-                    {cell.row.values.userName === 'Rama krishna' ? (
-                      <img src={cell.row.values.profilePic} alt="img" />
-                    ) : null}
                     {cell.render('Cell')}
                   </td>
                 ))}

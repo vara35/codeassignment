@@ -13,6 +13,13 @@ import {
   ApprovedText,
 } from './styledComponents'
 
+const approveButtonConstants = {
+  initial: 'INITIAL',
+  inprogress: 'INPROGRESS',
+  success: 'SUCCESS',
+  failure: 'FAILURE',
+}
+
 const Card = props => {
   const {cardItem, updateUser} = props
   const {
@@ -37,28 +44,53 @@ const Card = props => {
       ? postContent.slice(0, 60)
       : 'IS SIMPLICITY A real thing? Or is design the pursuit of'
 
+  const buttonFailureView = () => <ApproveButton retry>Retry</ApproveButton>
+
+  const buttonSuccessView = () => <ApprovedText>Approved</ApprovedText>
+
+  const buttonInprogressView = () => (
+    <ApprovedText loading>Loading...</ApprovedText>
+  )
+
+  const buttonInitialView = () => (
+    <ApproveButton onClick={updateApprove}>Approve</ApproveButton>
+  )
+
+  const showButton = () => {
+    switch (isApproved) {
+      case approveButtonConstants.initial:
+        return buttonInitialView()
+      case approveButtonConstants.inprogress:
+        return buttonInprogressView()
+      case approveButtonConstants.success:
+        return buttonSuccessView()
+      case approveButtonConstants.failure:
+        return buttonFailureView()
+      default:
+        return null
+    }
+  }
+
   return (
     <CardListElement>
       <CardHeading>{title}</CardHeading>
-      {tag1 && <EllipseContainer>...</EllipseContainer>}
+      {commentsCount !== 0 && <EllipseContainer>...</EllipseContainer>}
       <CardDescription>{`${content}...`}</CardDescription>
       <MessagesCountContainer>
         <SpanAndMessageContainer>
           {tag1 && <SpanContainer>{tag1}</SpanContainer>}
           {tag2 && <SpanContainer addColor>{tag2}</SpanContainer>}
         </SpanAndMessageContainer>
-        <SpanAndMessageContainer>
-          <MessageImage src="https://res.cloudinary.com/image-link-getter/image/upload/v1647833163/Screenshot_2022-03-21_085542_lioglp.png" />
-          <SpanContainer>{commentsCount}</SpanContainer>
-        </SpanAndMessageContainer>
+        {commentsCount !== 0 && (
+          <SpanAndMessageContainer>
+            <MessageImage src="https://res.cloudinary.com/image-link-getter/image/upload/v1647833163/Screenshot_2022-03-21_085542_lioglp.png" />
+            <SpanContainer>{commentsCount}</SpanContainer>
+          </SpanAndMessageContainer>
+        )}
       </MessagesCountContainer>
       <MessagesCountContainer>
         <Profile profilePic={profilePic} userName={userName} />
-        {isApproved ? (
-          <ApprovedText>Approved</ApprovedText>
-        ) : (
-          <ApproveButton onClick={updateApprove}>Approve</ApproveButton>
-        )}
+        {showButton()}
       </MessagesCountContainer>
     </CardListElement>
   )

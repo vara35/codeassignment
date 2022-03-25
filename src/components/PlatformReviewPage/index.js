@@ -62,7 +62,7 @@ class PlatformReviewPage extends Component {
         title: eachItem.title,
         tag1: eachItem.tags.length > 0 ? eachItem.tags[0].tag_name : null,
         tag2: eachItem.tags.length > 0 ? eachItem.tags[1].tag_name : null,
-        isApproved: false,
+        isApproved: 'INITIAL',
       }))
       this.setState({
         cardData: updatedData,
@@ -77,6 +77,13 @@ class PlatformReviewPage extends Component {
 
   updateUser = async (name, userId, postId) => {
     const {cardData} = this.state
+    const modifyDataToInprogress = cardData.map(eachItem => {
+      if (eachItem.postId === postId) {
+        return {...eachItem, isApproved: 'INPROGRESS'}
+      }
+      return eachItem
+    })
+    this.setState({cardData: modifyDataToInprogress})
     const Url =
       'https://y5764x56r9.execute-api.ap-south-1.amazonaws.com/mockAPI/posts'
     const userDetails = {username: name, userId}
@@ -91,11 +98,19 @@ class PlatformReviewPage extends Component {
     if (response1.ok) {
       const modifyData = cardData.map(eachItem => {
         if (eachItem.postId === postId) {
-          return {...eachItem, isApproved: true}
+          return {...eachItem, isApproved: 'SUCCESS'}
         }
         return eachItem
       })
       this.setState({cardData: modifyData})
+    } else {
+      const modifyDataToFailure = cardData.map(eachItem => {
+        if (eachItem.postId === postId) {
+          return {...eachItem, isApproved: 'FAILURE'}
+        }
+        return eachItem
+      })
+      this.setState({cardData: modifyDataToFailure})
     }
   }
 
@@ -159,15 +174,13 @@ class PlatformReviewPage extends Component {
           <CardContainer>
             <Header />
             <SwitchButton changeSwitchStatus={this.changeSwitchStatus} />
-            {switchStatus ? (
-              <AcceptHeading>Accept Request</AcceptHeading>
-            ) : null}
+            {switchStatus && <AcceptHeading>Accept Request</AcceptHeading>}
             {this.showCardsFunction()}
           </CardContainer>
         ) : (
           <ReportingPortal
             cardData={cardData}
-            changeSwitchStatus={this.changeSwitchStatus}
+            changePortalSwitchStatus={this.changeSwitchStatus}
           />
         )}
       </PlatformReviewMainContainer>

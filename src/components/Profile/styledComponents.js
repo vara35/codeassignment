@@ -6,9 +6,9 @@ export const SpanAndMessageContainer = styled.div`
 `
 
 export const CardImage = styled.img`
-  width: 35px;
+  width: 32px;
   height: 32px;
-  border-radius: 20px;
+  border-radius: 50%;
   border: 0;
 `
 export const UserName = styled.h3`
@@ -26,8 +26,8 @@ export const CardImageName = styled.span`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 30px;
-  width: 30px;
+  height: 32px;
+  width: 32px;
   border-radius: 50%;
   background-color: #ca9f00;
   color: #ffff;

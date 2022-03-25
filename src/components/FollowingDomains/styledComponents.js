@@ -5,7 +5,7 @@ export const DomainNameList = styled.li`
 `
 export const ListDescription = styled.p`
  font-family: "Roboto";
-  font-size: 13px;
+  font-size: 14px;
   height:15px;
   font-weight: normal;
   font-stretch: normal;
@@ -14,6 +14,5 @@ export const ListDescription = styled.p`
   letter-spacing: normal;
   color: #171f46 ;
   margin-top:0;
-
 }
 `

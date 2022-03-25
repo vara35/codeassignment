@@ -33,7 +33,7 @@ export const EllipseContainer = styled.div`
 export const CardHeading = styled.h2`
   width: 183px;
   height: 160px;
-  font-family: 'HKGrotesk';
+  font-family: 'Roboto';
   font-size: 18px;
   font-weight: 600;
   font-stretch: normal;
@@ -91,7 +91,7 @@ export const ApproveButton = styled.button`
   margin: 24px 0 0 58px;
   padding: 8px 20px;
   border-radius: 4px;
-  background-color: #0b69ff;
+  background-color: ${props => (props.retry ? 'red' : '#0b69ff')};
   font-family: 'HKGrotesk';
   font-size: 14px;
   font-weight: 600;
@@ -116,5 +116,5 @@ export const ApprovedText = styled.p`
   font-style: normal;
   line-height: 1.71;
   letter-spacing: normal;
-  color: #2dca73;
+  color: ${props => (props.loading ? '#000000' : '#2dca73')};
 `

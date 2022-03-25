@@ -20,15 +20,15 @@ export const ListDescription = styled.p`
 }
 `
 export const SuggestListButton = styled.button`
-  font-family: 'Roboto';
-  font-size: 12px;
+  font-family: 'HKGrotesk';
+  font-size: 14px;
   font-weight: normal;
   font-stretch: normal;
   font-style: normal;
-  line-height: 0.1;
+  line-height: 1.71;
   letter-spacing: normal;
-  color: var(--dark-blue-grey);
-  margin-bottom: 24px;
   border: 0;
+  background-color: transparent;
+  padding-bottom: 8px;
   color: ${props => (props.category === 'Cancel' ? 'red' : 'blue')};
 `
