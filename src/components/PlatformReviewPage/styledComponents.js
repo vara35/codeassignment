@@ -61,29 +61,23 @@ export const MenuUlElement = styled.ul`
 `
 
 export const AcceptHeading = styled.h1`
-  width: 240px;
+  width: 200px;
   height: 40px;
-  padding-left: 20px;
-  font-family: 'HKGrotesk';
+  font-family: 'Roboto';
   font-size: 25px;
   font-weight: normal;
   font-stretch: normal;
   font-style: normal;
   line-height: 1.25;
+  padding-left: 20px;
   letter-spacing: normal;
   color: #171f46;
   @media screen and (min-width: 767px) {
     width: 240px;
     height: 40px;
     margin: 24px 128px 16px 48px;
-    font-family: 'HKGrotesk';
     font-size: 32px;
-    font-weight: normal;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.25;
-    letter-spacing: normal;
-    color: #171f46;
+    padding-left: 0px;
   }
 `
 export const LoadingContainer = styled.div`

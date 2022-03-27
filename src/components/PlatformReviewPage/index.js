@@ -181,6 +181,7 @@ class PlatformReviewPage extends Component {
           <ReportingPortal
             cardData={cardData}
             changePortalSwitchStatus={this.changeSwitchStatus}
+            passUpdateUserToPortal={this.updateUser}
           />
         )}
       </PlatformReviewMainContainer>

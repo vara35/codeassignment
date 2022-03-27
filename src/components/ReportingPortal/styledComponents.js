@@ -9,7 +9,7 @@ export const ObservationHeading = styled.h1`
   width: 425px;
   height: 40px;
   margin: 48px 87px 10px 100px;
-  font-family: 'HKGrotesk';
+  font-family: 'Roboto';
   font-size: 32px;
   font-weight: 500;
   font-stretch: normal;

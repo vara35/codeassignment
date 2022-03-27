@@ -1,10 +1,12 @@
-import {useTable} from 'react-table'
+import {useTable, useSortBy} from 'react-table'
 import React from 'react'
 import {BsFilter} from 'react-icons/bs'
 
 import Profile from '../Profile'
 import MessageImage from '../MessageImage'
 import SwitchButton from '../SwitchButton'
+import Category from '../Category'
+import ButtonComponent from '../ButtonComponent'
 
 import {
   PortalContainer,
@@ -14,7 +16,8 @@ import {
 } from './styledComponents'
 
 const ReportingPortal = props => {
-  const {cardData, changePortalSwitchStatus} = props
+  const {cardData, changePortalSwitchStatus, passUpdateUserToPortal} = props
+
   const data = React.useMemo(() => [...cardData], [cardData])
 
   const columns = React.useMemo(
@@ -45,39 +48,33 @@ const ReportingPortal = props => {
         },
       },
       {
-        Header: 'SEVERTY',
+        Header: 'CATEGORY',
         accessor: 'col4',
-        Cell: () => (
-          <button
-            type="button"
-            style={{
-              width: '64px',
-              height: '16px',
-              fontFamily: 'HKGrotesk',
-              fontSize: '12px',
-              fontWeight: 'bold',
-              fontStretch: 'normal',
-              fontStyle: 'normal',
-              lineHeight: '1.33',
-              backgroundColor: '#ff0b37',
-              color: '#ffffff',
-              border: 0,
-              borderRadius: '6px',
-            }}
-          >
-            HIGH
-          </button>
-        ),
+        Cell: cellProps => {
+          const {row} = cellProps
+          const {original} = row
+          const {tag1, tag2} = original
+          return <Category tag1={tag1} tag2={tag2} />
+        },
       },
       {
         Header: 'STATUS',
-        accessor: 'col5',
-        Cell: 'Closed',
-      },
-      {
-        Header: 'DUE DATE',
-        accessor: 'col6',
-        Cell: '17/5/2020 at 05:30 PM',
+        accessor: 'STATUS',
+        Cell: cellProps => {
+          const {row} = cellProps
+          const {original} = row
+          const {isApproved, userName, userId, postId} = original
+          const updateUser1 = () => {
+            passUpdateUserToPortal(userName, userId, postId)
+          }
+          return (
+            <ButtonComponent
+              isApproved={isApproved}
+              marginStatus="true"
+              updateUser={updateUser1}
+            />
+          )
+        },
       },
       {
         Header: 'MESSAGES',
@@ -86,11 +83,16 @@ const ReportingPortal = props => {
           const {row} = cellProps
           const {original} = row
           const {commentsCount} = original
-          return <MessageImage commentsCount={commentsCount} />
+          return (
+            <MessageImage
+              commentsCount={commentsCount}
+              url="https://res.cloudinary.com/image-link-getter/image/upload/v1648194797/Screenshot_2022-03-25_132259_epn2h4.png"
+            />
+          )
         },
       },
     ],
-    [],
+    [passUpdateUserToPortal],
   )
 
   const {
@@ -99,10 +101,20 @@ const ReportingPortal = props => {
     headerGroups,
     rows,
     prepareRow,
-  } = useTable({columns, data})
+  } = useTable({columns, data}, useSortBy)
 
   const changeSwitchStatusFromPortal = () => {
     changePortalSwitchStatus()
+  }
+
+  const getIcons = column => {
+    if (column.isSorted === false) {
+      if (column.isSortedDesc) {
+        return '🔽'
+      }
+      return '🔼'
+    }
+    return null
   }
 
   return (
@@ -116,7 +128,7 @@ const ReportingPortal = props => {
       <table
         {...getTableProps()}
         style={{
-          height: '66px',
+          height: '64px',
           margin: ' 24px 100px 0',
           border: 'solid 1px  #d7dfe9',
           marginBottom: '30px',
@@ -127,9 +139,10 @@ const ReportingPortal = props => {
             <tr
               {...headerGroup.getHeaderGroupProps()}
               style={{
-                width: '33px',
-                height: '16px',
-                margin: '1px 125px 0 0',
+                width: '1024px',
+                height: '64px',
+                margin: '24px 100px 0',
+                padding: '24px 34px 23px 68px',
                 fontFamily: 'HKGrotesk',
                 fontSize: '12px',
                 fontWeight: '600',
@@ -141,13 +154,14 @@ const ReportingPortal = props => {
             >
               {headerGroup.headers.map(column => (
                 <th
-                  {...column.getHeaderProps()}
+                  {...column.getHeaderProps(column.getSortByToggleProps())}
                   style={{
                     padding: '10px',
                     borderBottom: 'solid 2px #d7dfe9',
                   }}
                 >
                   {column.render('Header')}
+                  <span>{getIcons(column)}</span>
                 </th>
               ))}
             </tr>
