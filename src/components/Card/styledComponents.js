@@ -4,7 +4,8 @@ export const CardListElement = styled.li`
   list-style-type: none;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: ${props =>
+    props.commentsCount ? 'space-around' : 'space-between'};
   width: 336px;
   height: 371px;
   margin: 16px 32px 32px 48px;
@@ -30,9 +31,9 @@ export const EllipseContainer = styled.div`
   text-align: right;
 `
 
-export const SpanEllipse = styled.span`
+export const SpanEllipse = styled.img`
   width: 16px;
-  height: 5px;
+  height: 16px;
 `
 
 export const CardHeading = styled.h2`
@@ -68,10 +69,10 @@ export const MessagesCountContainer = styled.div`
 `
 
 export const MessageIcon = styled.img`
-  width: 22px;
-  height: 20px;
+  width: 25px;
+  height: 24px;
   margin: 6px 0px 4px 0;
-  background-color: yellow;
+  object-fit: contain;
 `
 export const SpanForCommentsCount = styled.span`
   color: #171f46;

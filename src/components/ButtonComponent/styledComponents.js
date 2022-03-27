@@ -4,7 +4,7 @@ export const ApproveButton = styled.button`
   width: 93px;
   height: 40px;
   margin: ${props =>
-    props.marginValue ? '12.5px  0 0 20px' : '12.5px  0 0 58px'};
+    props.marginValue ? '10px  0 0 15px' : '12.5px  0 0 58px'};
   padding: 8px 20px;
   border-radius: 4px;
   background-color: ${props => (props.retry ? 'red' : '#0b69ff')};
@@ -22,7 +22,7 @@ export const ApproveButton = styled.button`
 export const ApprovedText = styled.p`
   width: 93px;
   height: 40px;
-  margin: ${props => (props.marginValue ? '14px  0 0 20px' : '14px  0 0 58px')};
+  margin: ${props => (props.marginValue ? '10px  0 0 15px' : '14px  0 0 58px')};
   padding: 8px 20px;
   border-radius: 4px;
   font-family: 'roboto';

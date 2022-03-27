@@ -1,6 +1,5 @@
 import Profile from '../Profile'
 import Category from '../Category'
-import MessageImage from '../MessageImage'
 import ButtonComponent from '../ButtonComponent'
 
 import {
@@ -42,11 +41,11 @@ const Card = props => {
   }
 
   return (
-    <CardListElement>
+    <CardListElement commentsCount={commentsCount}>
       <CardHeading>{cardTitle}</CardHeading>
       {commentsCount !== 0 && (
         <EllipseContainer>
-          <SpanEllipse>...</SpanEllipse>
+          <SpanEllipse src="https://res.cloudinary.com/image-link-getter/image/upload/v1648359358/Screenshot_2022-03-27_110434_oesthh.png" />
         </EllipseContainer>
       )}
       <CardDescription>{`${content}...`}</CardDescription>
@@ -54,10 +53,7 @@ const Card = props => {
         <Category tag1={tag1} tag2={tag2} />
         {commentsCount !== 0 && (
           <SpanAndMessageContainer>
-            <MessageImage
-              topNum="true"
-              url="https://res.cloudinary.com/image-link-getter/image/upload/v1647833163/Screenshot_2022-03-21_085542_lioglp.png"
-            />
+            <MessageIcon src="https://res.cloudinary.com/image-link-getter/image/upload/v1647833163/Screenshot_2022-03-21_085542_lioglp.png" />
             <SpanForCommentsCount>{commentsCount}</SpanForCommentsCount>
           </SpanAndMessageContainer>
         )}
