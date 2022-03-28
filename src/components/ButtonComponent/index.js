@@ -1,3 +1,4 @@
+import Loader from 'react-loader-spinner'
 import {ApproveButton, ApprovedText} from './styledComponents'
 
 const approveButtonConstants = {
@@ -21,8 +22,8 @@ const ButtonComponent = props => {
   )
 
   const buttonInprogressView = () => (
-    <ApprovedText loading="true" marginValue={marginStatus}>
-      Loading...
+    <ApprovedText marginValue={marginStatus}>
+      <Loader type="TailSpin" color="#0b69ff" height="25" width="25" />
     </ApprovedText>
   )
 

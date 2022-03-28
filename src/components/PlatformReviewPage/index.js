@@ -1,4 +1,5 @@
 import {Component} from 'react'
+import Loader from 'react-loader-spinner'
 
 import Card from '../Card'
 import Header from '../Header'
@@ -147,7 +148,11 @@ class PlatformReviewPage extends Component {
     )
   }
 
-  cardInprogressView = () => <LoadingContainer>Loading...</LoadingContainer>
+  cardInprogressView = () => (
+    <LoadingContainer>
+      <Loader type="ThreeDots" color="#0b69ff" height="50" width="50" />
+    </LoadingContainer>
+  )
 
   showCardsFunction = () => {
     const {cardApiStatus} = this.state

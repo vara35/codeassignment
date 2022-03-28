@@ -32,5 +32,5 @@ export const ApprovedText = styled.p`
   font-style: normal;
   line-height: 1.71;
   letter-spacing: normal;
-  color: ${props => (props.loading ? '#000000' : '#2dca73')};
+  color: #2dca73;
 `

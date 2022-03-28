@@ -85,9 +85,7 @@ export const LoadingContainer = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  text-align: center;
   height: 30vh;
-  color: #248cbd;
 `
 
 export const FailureContainer = styled.div`
