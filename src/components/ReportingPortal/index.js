@@ -110,9 +110,9 @@ const ReportingPortal = props => {
   const getIcons = column => {
     if (column.isSorted === false) {
       if (column.isSortedDesc) {
-        return '🔽'
+        return '🔼'
       }
-      return '🔼'
+      return '🔽'
     }
     return null
   }
