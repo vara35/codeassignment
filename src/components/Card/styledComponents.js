@@ -60,12 +60,20 @@ export const CardDescription = styled.p`
   line-height: 1.71;
   letter-spacing: normal;
   color: #171f46;
+  margin-top: 0;
 `
 
 export const MessagesCountContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+`
+
+export const ProfileButtonContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
 `
 
 export const MessageIcon = styled.img`

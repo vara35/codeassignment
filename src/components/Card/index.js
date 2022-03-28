@@ -9,6 +9,7 @@ import {
   EllipseContainer,
   MessageIcon,
   MessagesCountContainer,
+  ProfileButtonContainer,
   SpanAndMessageContainer,
   SpanEllipse,
   SpanForCommentsCount,
@@ -58,10 +59,10 @@ const Card = props => {
           </SpanAndMessageContainer>
         )}
       </MessagesCountContainer>
-      <MessagesCountContainer>
+      <ProfileButtonContainer>
         <Profile profilePic={profilePic} userName={userName} />
         <ButtonComponent isApproved={isApproved} updateUser={updateApprove} />
-      </MessagesCountContainer>
+      </ProfileButtonContainer>
     </CardListElement>
   )
 }

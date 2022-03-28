@@ -12,7 +12,6 @@ export const NavContainer = styled.nav`
     height: 50px;
     border: solid 1px #d7dfe9;
     padding: 13px 78px 12px 49px;
-    padding: 13px 78px 12px 49px;
   }
 `
 export const InputElement = styled.input`
@@ -24,6 +23,7 @@ export const InputElement = styled.input`
   border: solid 1px #d7dfe9;
   background-color: #ffffff;
   flex-grow: 1;
+
   @media screen and (min-width: 767px) {
     width: 648px;
     height: 40px;

@@ -23,7 +23,13 @@ const ButtonComponent = props => {
 
   const buttonInprogressView = () => (
     <ApprovedText marginValue={marginStatus}>
-      <Loader type="TailSpin" color="#0b69ff" height="25" width="25" />
+      <Loader
+        type="TailSpin"
+        color="#0b69ff"
+        height="25"
+        width="25"
+        margin-left="20"
+      />
     </ApprovedText>
   )
 
