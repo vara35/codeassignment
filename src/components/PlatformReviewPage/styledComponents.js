@@ -3,6 +3,7 @@ import styled from 'styled-components'
 export const PlatformReviewMainContainer = styled.div`
   min-height: 1024px;
   background-color: #fbfbfb;
+
   @media screen and (min-width: 767px) {
     display: flex;
   }
@@ -79,13 +80,6 @@ export const AcceptHeading = styled.h1`
     font-size: 32px;
     padding-left: 0px;
   }
-`
-export const LoadingContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 30vh;
 `
 
 export const FailureContainer = styled.div`

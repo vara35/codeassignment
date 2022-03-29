@@ -1,15 +1,14 @@
 import styled from 'styled-components'
 
 export const PortalContainer = styled.div`
-  width: 100%;
-  padding-left: 30px;
-  padding-right: 30px;
+  height: 1024px;
+  padding: 0 0 128px;
 `
 export const ObservationHeading = styled.h1`
   width: 425px;
   height: 40px;
   margin: 48px 87px 10px 100px;
-  font-family: 'Roboto';
+  font-family: 'HKGrotesk';
   font-size: 32px;
   font-weight: 500;
   font-stretch: normal;
@@ -17,6 +16,12 @@ export const ObservationHeading = styled.h1`
   line-height: 1.25;
   letter-spacing: normal;
   color: #0b69ff;
+  @media screen and (max-width: 567px) {
+    width: 300px;
+    height: 25px;
+    font-size: 22px;
+    margin: 14px 20px 0 0px;
+  }
 `
 
 export const SwitchComponentButton = styled.button`

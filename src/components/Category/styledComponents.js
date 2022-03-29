@@ -4,6 +4,11 @@ export const SpanAndMessageContainer = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  @media screen and (max-width: 567px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 `
 
 export const SpanContainer = styled.span`
@@ -15,7 +20,7 @@ export const SpanContainer = styled.span`
   height: 24px;
   border-radius: 2px;
   margin-right: 10px;
-  font-family: 'ROBOTO';
+  font-family: 'Rubik';
   font-size: 12px;
   font-weight: normal;
   font-stretch: normal;

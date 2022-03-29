@@ -17,6 +17,12 @@ export const ApproveButton = styled.button`
   letter-spacing: normal;
   color: #ffffff;
   cursor: pointer;
+  @media screen and (max-width: 567px) {
+    width: 50px;
+    height: 25px;
+    font-size: 10px;
+    padding: 4px;
+  }
 `
 export const ApprovedText = styled.p`
   width: 93px;

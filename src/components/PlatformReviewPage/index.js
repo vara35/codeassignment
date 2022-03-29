@@ -1,18 +1,14 @@
 import {Component} from 'react'
-import Loader from 'react-loader-spinner'
 
 import Card from '../Card'
 import Header from '../Header'
 import LeftMenu from '../LeftMenu'
-import SwitchButton from '../SwitchButton'
-
-import ReportingPortal from '../ReportingPortal'
+import LoaderThreeDots from '../LoaderThreeDots'
 
 import {
   PlatformReviewMainContainer,
   CardContainer,
   AcceptHeading,
-  LoadingContainer,
   FailureContainer,
   FailureImage,
   SomethingWrongHeading,
@@ -30,7 +26,6 @@ const componentApiStatus = {
 class PlatformReviewPage extends Component {
   state = {
     cardApiStatus: componentApiStatus.initial,
-    switchStatus: true,
     cardData: [],
   }
 
@@ -69,6 +64,7 @@ class PlatformReviewPage extends Component {
         cardData: updatedData,
         cardApiStatus: componentApiStatus.success,
       })
+      localStorage.setItem('tableData', JSON.stringify(updatedData))
     } else {
       this.setState({
         cardApiStatus: componentApiStatus.failure,
@@ -85,6 +81,7 @@ class PlatformReviewPage extends Component {
       return eachItem
     })
     this.setState({cardData: modifyDataToInprogress})
+    localStorage.setItem('tableData', JSON.stringify(modifyDataToInprogress))
     const Url =
       'https://y5764x56r9.execute-api.ap-south-1.amazonaws.com/mockAPI/posts'
     const userDetails = {username: name, userId}
@@ -104,6 +101,7 @@ class PlatformReviewPage extends Component {
         return eachItem
       })
       this.setState({cardData: modifyData})
+      localStorage.setItem('tableData', JSON.stringify(modifyData))
     } else {
       const modifyDataToFailure = cardData.map(eachItem => {
         if (eachItem.postId === postId) {
@@ -112,11 +110,8 @@ class PlatformReviewPage extends Component {
         return eachItem
       })
       this.setState({cardData: modifyDataToFailure})
+      localStorage.setItem('tableData', JSON.stringify(modifyDataToFailure))
     }
-  }
-
-  changeSwitchStatus = () => {
-    this.setState(prevState => ({switchStatus: !prevState.switchStatus}))
   }
 
   retryApi = () => {
@@ -148,11 +143,7 @@ class PlatformReviewPage extends Component {
     )
   }
 
-  cardInprogressView = () => (
-    <LoadingContainer>
-      <Loader type="ThreeDots" color="#0b69ff" height="50" width="50" />
-    </LoadingContainer>
-  )
+  cardInprogressView = () => <LoaderThreeDots />
 
   showCardsFunction = () => {
     const {cardApiStatus} = this.state
@@ -171,24 +162,14 @@ class PlatformReviewPage extends Component {
   showLeftMenuContainer = () => <LeftMenu />
 
   render() {
-    const {switchStatus, cardData} = this.state
     return (
       <PlatformReviewMainContainer>
-        {switchStatus && this.showLeftMenuContainer()}
-        {switchStatus ? (
-          <CardContainer>
-            <Header />
-            <SwitchButton changeSwitchStatus={this.changeSwitchStatus} />
-            {switchStatus && <AcceptHeading>Accept Request</AcceptHeading>}
-            {this.showCardsFunction()}
-          </CardContainer>
-        ) : (
-          <ReportingPortal
-            cardData={cardData}
-            changePortalSwitchStatus={this.changeSwitchStatus}
-            passUpdateUserToPortal={this.updateUser}
-          />
-        )}
+        {this.showLeftMenuContainer()}
+        <CardContainer>
+          <Header />
+          <AcceptHeading>Accept Request</AcceptHeading>
+          {this.showCardsFunction()}
+        </CardContainer>
       </PlatformReviewMainContainer>
     )
   }

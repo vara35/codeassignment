@@ -11,6 +11,11 @@ export const MessageImg = styled.img`
   width: 28px;
   height: 27px;
   position: relative;
+  @media screen and (max-width: 567px) {
+    width: 16px;
+    height: 16px;
+    margin-left: 14px;
+  }
 `
 export const MessageCounter = styled.p`
   display: flex;
@@ -26,4 +31,12 @@ export const MessageCounter = styled.p`
   bottom: 8px;
   left: 18px;
   right: 0;
+  @media screen and (max-width: 567px) {
+    width: 8px;
+    height: 8px;
+    font-size: 6px;
+    bottom: 4px;
+    left: 23px;
+    right: 0;
+  }
 `
