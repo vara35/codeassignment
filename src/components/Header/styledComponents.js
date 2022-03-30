@@ -9,7 +9,7 @@ export const NavContainer = styled.nav`
   padding: 8px 15px;
   background-color: #ffffff;
   @media screen and (min-width: 767px) {
-    height: 50px;
+    height: 73px;
     border: solid 1px #d7dfe9;
     padding: 13px 78px 12px 49px;
   }

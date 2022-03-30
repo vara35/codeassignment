@@ -61,27 +61,6 @@ export const MenuUlElement = styled.ul`
   padding-left: 0;
 `
 
-export const AcceptHeading = styled.h1`
-  width: 200px;
-  height: 40px;
-  font-family: 'Roboto';
-  font-size: 25px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.25;
-  padding-left: 20px;
-  letter-spacing: normal;
-  color: #171f46;
-  @media screen and (min-width: 767px) {
-    width: 240px;
-    height: 40px;
-    margin: 24px 128px 16px 48px;
-    font-size: 32px;
-    padding-left: 0px;
-  }
-`
-
 export const FailureContainer = styled.div`
   width: 100%;
   text-align: center;

@@ -4,11 +4,11 @@ import Card from '../Card'
 import Header from '../Header'
 import LeftMenu from '../LeftMenu'
 import LoaderThreeDots from '../LoaderThreeDots'
+import AcceptAndObserveHeading from '../AcceptAndObserveHeading'
 
 import {
   PlatformReviewMainContainer,
   CardContainer,
-  AcceptHeading,
   FailureContainer,
   FailureImage,
   SomethingWrongHeading,
@@ -167,7 +167,7 @@ class PlatformReviewPage extends Component {
         {this.showLeftMenuContainer()}
         <CardContainer>
           <Header />
-          <AcceptHeading>Accept Request</AcceptHeading>
+          <AcceptAndObserveHeading text="Accept Requests" />
           {this.showCardsFunction()}
         </CardContainer>
       </PlatformReviewMainContainer>

@@ -3,17 +3,14 @@ import {BsFilter} from 'react-icons/bs'
 
 import TableView from '../TableView'
 import LoaderThreeDots from '../LoaderThreeDots'
+import ReportingPortalHeader from '../ReportingPortalHeader'
+import AcceptAndObserveHeading from '../AcceptAndObserveHeading'
 
-import {
-  PortalContainer,
-  ObservationHeading,
-  FilterContainer,
-  FilterText,
-} from './styledComponents'
+import {PortalContainer, FilterContainer, FilterText} from './styledComponents'
 
 const tableStatus = {
   initial: 'INITIAL',
-  inprogress: 'INPROGRESS',
+  inprogress: 'IN_PROGRESS',
   success: 'SUCCESS',
   failure: 'FAILURE',
 }
@@ -67,7 +64,8 @@ class ReportingPortal extends Component {
   render() {
     return (
       <PortalContainer>
-        <ObservationHeading>Observations Assigned To Me</ObservationHeading>
+        <ReportingPortalHeader />
+        <AcceptAndObserveHeading text="Observations Assigned To Me" />
         <FilterContainer>
           <BsFilter />
           <FilterText>FILTER</FilterText>
