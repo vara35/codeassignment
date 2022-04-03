@@ -36,9 +36,47 @@ class ReportingPortal extends Component {
 
   tableFailureView = () => 'tableFailureView'
 
-  passUpdateUserToTable = (userName, userId, postId) => {
-    // const {passUpdateUserToPortal} = this.props
-    // passUpdateUserToPortal(userName, userId, postId)
+  passUpdateUserToTable = async (userName, userId, postId) => {
+    let parsedData = []
+    const getDataFromLocalStorage = localStorage.getItem('tableData')
+    if (getDataFromLocalStorage !== null) {
+      parsedData = JSON.parse(getDataFromLocalStorage)
+    }
+    const modifyDataToInprogress = parsedData.map(eachItem => {
+      if (eachItem.postId === postId) {
+        return {...eachItem, isApproved: 'IN_PROGRESS'}
+      }
+      return eachItem
+    })
+    localStorage.setItem('tableData', JSON.stringify(modifyDataToInprogress))
+    const Url =
+      'https://y5764x56r9.execute-api.ap-south-1.amazonaws.com/mockAPI/posts'
+    const userDetails = {username: userName, userId}
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(userDetails),
+    }
+    const userStatus = await fetch(Url, options)
+    if (userStatus.ok) {
+      const modifyData = parsedData.map(eachItem => {
+        if (eachItem.postId === postId) {
+          return {...eachItem, isApproved: 'SUCCESS'}
+        }
+        return eachItem
+      })
+      localStorage.setItem('tableData', JSON.stringify(modifyData))
+    } else {
+      const modifyDataToFailure = parsedData.map(eachItem => {
+        if (eachItem.postId === postId) {
+          return {...eachItem, isApproved: 'FAILURE'}
+        }
+        return eachItem
+      })
+      localStorage.setItem('tableData', JSON.stringify(modifyDataToFailure))
+    }
   }
 
   tableSuccessView = () => (

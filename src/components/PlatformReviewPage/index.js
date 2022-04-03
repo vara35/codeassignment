@@ -60,11 +60,11 @@ class PlatformReviewPage extends Component {
         tag2: eachItem.tags.length > 0 ? eachItem.tags[1].tag_name : null,
         isApproved: 'INITIAL',
       }))
+      localStorage.setItem('tableData', JSON.stringify(updatedData))
       this.setState({
         cardData: updatedData,
         cardApiStatus: componentApiStatus.success,
       })
-      localStorage.setItem('tableData', JSON.stringify(updatedData))
     } else {
       this.setState({
         cardApiStatus: componentApiStatus.failure,
@@ -80,8 +80,8 @@ class PlatformReviewPage extends Component {
       }
       return eachItem
     })
-    this.setState({cardData: modifyDataToInprogress})
     localStorage.setItem('tableData', JSON.stringify(modifyDataToInprogress))
+    this.setState({cardData: modifyDataToInprogress})
     const Url =
       'https://y5764x56r9.execute-api.ap-south-1.amazonaws.com/mockAPI/posts'
     const userDetails = {username: name, userId}
@@ -100,8 +100,8 @@ class PlatformReviewPage extends Component {
         }
         return eachItem
       })
-      this.setState({cardData: modifyData})
       localStorage.setItem('tableData', JSON.stringify(modifyData))
+      this.setState({cardData: modifyData})
     } else {
       const modifyDataToFailure = cardData.map(eachItem => {
         if (eachItem.postId === postId) {
@@ -109,8 +109,8 @@ class PlatformReviewPage extends Component {
         }
         return eachItem
       })
-      this.setState({cardData: modifyDataToFailure})
       localStorage.setItem('tableData', JSON.stringify(modifyDataToFailure))
+      this.setState({cardData: modifyDataToFailure})
     }
   }
 

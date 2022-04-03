@@ -87,7 +87,7 @@ const TableView = props => {
             <ButtonComponent
               isApproved={isApproved}
               marginStatus="true"
-              updateUser={updateUserFromTable}
+              updateUserStatus={updateUserFromTable}
             />
           )
         },
