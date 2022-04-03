@@ -3,13 +3,13 @@ import {ApproveButton, ApprovedText} from './styledComponents'
 
 const approveButtonConstants = {
   initial: 'INITIAL',
-  inprogress: 'INPROGRESS',
+  inprogress: 'IN_PROGRESS',
   success: 'SUCCESS',
   failure: 'FAILURE',
 }
 
 const ButtonComponent = props => {
-  const {isApproved, updateUser, marginStatus} = props
+  const {isApproved, updateUserStatus, marginStatus} = props
 
   const buttonFailureView = () => (
     <ApproveButton retry marginValue={marginStatus}>
@@ -33,12 +33,12 @@ const ButtonComponent = props => {
     </ApprovedText>
   )
 
-  const updateApproveFunction = () => {
-    updateUser()
+  const updateButtonStatus = () => {
+    updateUserStatus()
   }
 
   const buttonInitialView = () => (
-    <ApproveButton onClick={updateApproveFunction} marginValue={marginStatus}>
+    <ApproveButton onClick={updateButtonStatus} marginValue={marginStatus}>
       Approve
     </ApproveButton>
   )

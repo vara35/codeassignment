@@ -1,15 +1,19 @@
 import styled from 'styled-components'
 
-export const SpanAndMessageContainer = styled.div`
+export const ProfileContainer = styled.div`
   display: flex;
   align-items: center;
 `
 
-export const CardImage = styled.img`
+export const ProfileImage = styled.img`
   width: 32px;
   height: 32px;
   border-radius: 50%;
   border: 0;
+  @media screen and (max-width: 767px) {
+    width: 18px;
+    height: 18px;
+  }
 `
 export const UserName = styled.h3`
   color: #7e858e;
@@ -21,8 +25,11 @@ export const UserName = styled.h3`
   margin-left: 8px;
   line-height: 1.71;
   letter-spacing: normal;
+  @media screen and (max-width: 767px) {
+    font-size: 8px;
+  }
 `
-export const CardImageName = styled.span`
+export const ProfileImageName = styled.span`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -31,4 +38,8 @@ export const CardImageName = styled.span`
   border-radius: 50%;
   background-color: #ca9f00;
   color: #ffff;
+  @media screen and (max-width: 767px) {
+    width: 18px;
+    height: 18px;
+  }
 `

@@ -1,8 +1,8 @@
 import {
-  SpanAndMessageContainer,
-  CardImage,
+  ProfileContainer,
+  ProfileImage,
   UserName,
-  CardImageName,
+  ProfileImageName,
 } from './styledComponents'
 
 const Profile = props => {
@@ -10,11 +10,11 @@ const Profile = props => {
   const slicedName = userName.slice(0, 1)
 
   return (
-    <SpanAndMessageContainer>
-      {profilePic && <CardImage src={profilePic} alt="profile" />}
-      {!profilePic && <CardImageName> {slicedName} </CardImageName>}
+    <ProfileContainer>
+      {profilePic && <ProfileImage src={profilePic} alt="profile" />}
+      {!profilePic && <ProfileImageName> {slicedName} </ProfileImageName>}
       <UserName>{userName}</UserName>
-    </SpanAndMessageContainer>
+    </ProfileContainer>
   )
 }
 

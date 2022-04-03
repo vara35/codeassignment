@@ -20,8 +20,9 @@ export const ApproveButton = styled.button`
   @media screen and (max-width: 567px) {
     width: 50px;
     height: 25px;
-    font-size: 10px;
+    font-size: 8px;
     padding: 4px;
+    margin: 0px;
   }
 `
 export const ApprovedText = styled.p`
@@ -38,4 +39,11 @@ export const ApprovedText = styled.p`
   line-height: 1.71;
   letter-spacing: normal;
   color: #2dca73;
+  @media screen and (max-width: 567px) {
+    width: 50px;
+    height: 25px;
+    font-size: 8px;
+    padding: 4px;
+    margin: 0px;
+  }
 `

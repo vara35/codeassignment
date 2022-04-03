@@ -14,7 +14,6 @@ export const MessageImg = styled.img`
   @media screen and (max-width: 567px) {
     width: 16px;
     height: 16px;
-    margin-left: 14px;
   }
 `
 export const MessageCounter = styled.p`
@@ -36,7 +35,7 @@ export const MessageCounter = styled.p`
     height: 8px;
     font-size: 6px;
     bottom: 4px;
-    left: 23px;
+    left: 10px;
     right: 0;
   }
 `

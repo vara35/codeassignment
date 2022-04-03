@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 
 export const TableStyle = styled.table`.
-    width: 1240px;
   height: 64px;
   margin: 24px 100px 0;
   border: solid 1px #d7dfe9;
@@ -9,7 +8,7 @@ export const TableStyle = styled.table`.
   @media screen and (max-width: 567px) {
     width: 100%;
     height: 34px;
-    margin:  0;
+    margin:  0 15px 0 15px;
   }
 `
 

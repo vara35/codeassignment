@@ -23,7 +23,6 @@ export const InputElement = styled.input`
   border: solid 1px #d7dfe9;
   background-color: #ffffff;
   flex-grow: 1;
-
   @media screen and (min-width: 767px) {
     width: 648px;
     height: 40px;
@@ -33,7 +32,7 @@ export const InputElement = styled.input`
   }
 `
 
-export const WriteButton = styled.button`
+export const WritePostButton = styled.button`
   width: 80px;
   height: 30px;
   font-family: 'HKGrotesk';
@@ -71,7 +70,7 @@ export const IconInputContainer = styled.div`
   }
 `
 
-export const ButtonImageContainer = styled.div`
+export const HeaderLogoContainer = styled.div`
   display: flex;
   align-items: center;
 `

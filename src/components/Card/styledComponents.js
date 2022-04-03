@@ -13,7 +13,6 @@ export const CardListElement = styled.li`
   border-radius: 4px;
   border: solid 1px #d7dfe9;
   background-color: #ffffff;
-
   @media screen and (min-width: 767px) {
     width: 336px;
     height: 371px;
@@ -31,7 +30,7 @@ export const EllipseContainer = styled.div`
   text-align: right;
 `
 
-export const SpanEllipse = styled.img`
+export const Ellipse = styled.img`
   width: 16px;
   height: 16px;
 `
@@ -82,7 +81,7 @@ export const MessageIcon = styled.img`
   margin: 6px 0px 4px 0;
   object-fit: contain;
 `
-export const SpanForCommentsCount = styled.span`
+export const Comments = styled.span`
   color: #171f46;
   width: 10px;
   height: 24px;

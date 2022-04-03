@@ -76,7 +76,7 @@ class PlatformReviewPage extends Component {
     const {cardData} = this.state
     const modifyDataToInprogress = cardData.map(eachItem => {
       if (eachItem.postId === postId) {
-        return {...eachItem, isApproved: 'INPROGRESS'}
+        return {...eachItem, isApproved: 'IN_PROGRESS'}
       }
       return eachItem
     })
@@ -92,8 +92,8 @@ class PlatformReviewPage extends Component {
       },
       body: JSON.stringify(userDetails),
     }
-    const response1 = await fetch(Url, options)
-    if (response1.ok) {
+    const userStatus = await fetch(Url, options)
+    if (userStatus.ok) {
       const modifyData = cardData.map(eachItem => {
         if (eachItem.postId === postId) {
           return {...eachItem, isApproved: 'SUCCESS'}
@@ -121,7 +121,7 @@ class PlatformReviewPage extends Component {
   cardFailureView = () => (
     <FailureContainer>
       <FailureImage src="https://miro.medium.com/max/1400/0*zJ3sA4LbvcKen1N7.jpg" />
-      <SomethingWrongHeading>Something went wrong</SomethingWrongHeading>
+      <SomethingWrongHeading>Something Went Wrong</SomethingWrongHeading>
       <RetryButton type="button" onClick={this.retryApi}>
         Retry
       </RetryButton>
@@ -159,12 +159,10 @@ class PlatformReviewPage extends Component {
     }
   }
 
-  showLeftMenuContainer = () => <LeftMenu />
-
   render() {
     return (
       <PlatformReviewMainContainer>
-        {this.showLeftMenuContainer()}
+        <LeftMenu />
         <CardContainer>
           <Header />
           <AcceptAndObserveHeading text="Accept Requests" />

@@ -37,8 +37,8 @@ class ReportingPortal extends Component {
   tableFailureView = () => 'tableFailureView'
 
   passUpdateUserToTable = (userName, userId, postId) => {
-    const {passUpdateUserToPortal} = this.props
-    passUpdateUserToPortal(userName, userId, postId)
+    // const {passUpdateUserToPortal} = this.props
+    // passUpdateUserToPortal(userName, userId, postId)
   }
 
   tableSuccessView = () => (

@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const SpanAndMessageContainer = styled.div`
+export const CategoryContainer = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -11,7 +11,7 @@ export const SpanAndMessageContainer = styled.div`
   }
 `
 
-export const SpanContainer = styled.span`
+export const CategoryName = styled.span`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -20,6 +20,7 @@ export const SpanContainer = styled.span`
   height: 24px;
   border-radius: 2px;
   margin-right: 10px;
+  margin-top: 5px;
   font-family: 'Rubik';
   font-size: 12px;
   font-weight: normal;
@@ -30,4 +31,10 @@ export const SpanContainer = styled.span`
   color: ${props => (props.addColor ? '#2dca73' : '#0b69ff')};
   background-color: ${props =>
     props.addColor ? '#f3fff8' : 'rgba(11, 105, 255, 0.1)'};
+  @media screen and (max-width: 567px) {
+    min-width: 50px;
+    max-width: 75px;
+    height: 16px;
+    font-size: 8px;
+  }
 `

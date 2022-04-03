@@ -11,8 +11,8 @@ import {
   MessagesCountContainer,
   ProfileButtonContainer,
   SpanAndMessageContainer,
-  SpanEllipse,
-  SpanForCommentsCount,
+  Ellipse,
+  Comments,
 } from './styledComponents'
 
 const Card = props => {
@@ -37,7 +37,7 @@ const Card = props => {
 
   const cardTitle = title.slice(0, 70)
 
-  const updateApprove = () => {
+  const updateUserStatus = () => {
     updateUser(userName, userId, postId)
   }
 
@@ -46,7 +46,7 @@ const Card = props => {
       <CardHeading>{cardTitle}</CardHeading>
       {commentsCount !== 0 && (
         <EllipseContainer>
-          <SpanEllipse src="https://res.cloudinary.com/image-link-getter/image/upload/v1648359358/Screenshot_2022-03-27_110434_oesthh.png" />
+          <Ellipse src="https://res.cloudinary.com/image-link-getter/image/upload/v1648359358/Screenshot_2022-03-27_110434_oesthh.png" />
         </EllipseContainer>
       )}
       <CardDescription>{`${content}...`}</CardDescription>
@@ -55,13 +55,16 @@ const Card = props => {
         {commentsCount !== 0 && (
           <SpanAndMessageContainer>
             <MessageIcon src="https://res.cloudinary.com/image-link-getter/image/upload/v1647833163/Screenshot_2022-03-21_085542_lioglp.png" />
-            <SpanForCommentsCount>{commentsCount}</SpanForCommentsCount>
+            <Comments>{commentsCount}</Comments>
           </SpanAndMessageContainer>
         )}
       </MessagesCountContainer>
       <ProfileButtonContainer>
         <Profile profilePic={profilePic} userName={userName} />
-        <ButtonComponent isApproved={isApproved} updateUser={updateApprove} />
+        <ButtonComponent
+          isApproved={isApproved}
+          updateUserStatus={updateUserStatus}
+        />
       </ProfileButtonContainer>
     </CardListElement>
   )
