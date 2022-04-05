@@ -5,27 +5,29 @@ import Header from '../Header'
 import LeftMenu from '../LeftMenu'
 import LoaderThreeDots from '../LoaderThreeDots'
 import AcceptAndObserveHeading from '../AcceptAndObserveHeading'
+import ApiFailureView from '../FailureView'
 
 import {
   PlatformReviewMainContainer,
   CardContainer,
-  FailureContainer,
-  FailureImage,
-  SomethingWrongHeading,
-  RetryButton,
   CardUlElement,
 } from './styledComponents'
 
+const INITIAL = 'INITIAL'
+const IN_PROGRESS = 'IN_PROGRESS'
+const SUCCESS = 'SUCCESS'
+const FAILURE = 'FAILURE'
+
 const componentApiStatus = {
-  initial: 'INITIAL',
-  inprogress: 'IN_PROGRESS',
-  success: 'SUCCESS',
-  failure: 'FAILURE',
+  INITIAL,
+  IN_PROGRESS,
+  SUCCESS,
+  FAILURE,
 }
 
 class PlatformReviewPage extends Component {
   state = {
-    cardApiStatus: componentApiStatus.initial,
+    cardApiStatus: componentApiStatus.INITIAL,
     cardData: [],
   }
 
@@ -34,7 +36,7 @@ class PlatformReviewPage extends Component {
   }
 
   getUserData = async () => {
-    this.setState({cardApiStatus: componentApiStatus.inprogress})
+    this.setState({cardApiStatus: componentApiStatus.IN_PROGRESS})
 
     const Url =
       'https://y5764x56r9.execute-api.ap-south-1.amazonaws.com/mockAPI/posts'
@@ -63,11 +65,11 @@ class PlatformReviewPage extends Component {
       localStorage.setItem('tableData', JSON.stringify(updatedData))
       this.setState({
         cardData: updatedData,
-        cardApiStatus: componentApiStatus.success,
+        cardApiStatus: componentApiStatus.SUCCESS,
       })
     } else {
       this.setState({
-        cardApiStatus: componentApiStatus.failure,
+        cardApiStatus: componentApiStatus.FAILURE,
       })
     }
   }
@@ -118,15 +120,7 @@ class PlatformReviewPage extends Component {
     this.getUserData()
   }
 
-  cardFailureView = () => (
-    <FailureContainer>
-      <FailureImage src="https://miro.medium.com/max/1400/0*zJ3sA4LbvcKen1N7.jpg" />
-      <SomethingWrongHeading>Something Went Wrong</SomethingWrongHeading>
-      <RetryButton type="button" onClick={this.retryApi}>
-        Retry
-      </RetryButton>
-    </FailureContainer>
-  )
+  cardFailureView = () => <ApiFailureView retryApi={this.retryApi} />
 
   cardSuccessView = () => {
     const {cardData} = this.state
@@ -148,11 +142,11 @@ class PlatformReviewPage extends Component {
   showCardsFunction = () => {
     const {cardApiStatus} = this.state
     switch (cardApiStatus) {
-      case componentApiStatus.inprogress:
+      case componentApiStatus.IN_PROGRESS:
         return this.cardInprogressView()
-      case componentApiStatus.success:
+      case componentApiStatus.SUCCESS:
         return this.cardSuccessView()
-      case componentApiStatus.failure:
+      case componentApiStatus.FAILURE:
         return this.cardFailureView()
       default:
         return null

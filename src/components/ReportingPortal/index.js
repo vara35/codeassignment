@@ -5,36 +5,40 @@ import TableView from '../TableView'
 import LoaderThreeDots from '../LoaderThreeDots'
 import ReportingPortalHeader from '../ReportingPortalHeader'
 import AcceptAndObserveHeading from '../AcceptAndObserveHeading'
+import ApiFailureView from '../FailureView'
 
 import {PortalContainer, FilterContainer, FilterText} from './styledComponents'
 
+const INITIAL = 'INITIAL'
+const IN_PROGRESS = 'IN_PROGRESS'
+const SUCCESS = 'SUCCESS'
+const FAILURE = 'FAILURE'
+
 const tableStatus = {
-  initial: 'INITIAL',
-  inprogress: 'IN_PROGRESS',
-  success: 'SUCCESS',
-  failure: 'FAILURE',
+  INITIAL,
+  IN_PROGRESS,
+  SUCCESS,
+  FAILURE,
 }
 
 class ReportingPortal extends Component {
-  state = {tableCurrentStatus: tableStatus.initial}
+  state = {tableCurrentStatus: tableStatus.INITIAL}
 
   componentDidMount() {
     this.getUserDataInPortal()
   }
 
   getUserDataInPortal = async () => {
-    this.setState({tableCurrentStatus: tableStatus.inprogress})
+    this.setState({tableCurrentStatus: tableStatus.IN_PROGRESS})
 
     this.setState({
-      tableCurrentStatus: tableStatus.success,
+      tableCurrentStatus: tableStatus.SUCCESS,
     })
   }
 
   changeSwitchStatusFromPortal = () => {
     this.changePortalSwitchStatus()
   }
-
-  tableFailureView = () => 'tableFailureView'
 
   passUpdateUserToTable = async (userName, userId, postId) => {
     let parsedData = []
@@ -79,6 +83,12 @@ class ReportingPortal extends Component {
     }
   }
 
+  retryApi = () => {
+    this.getUserDataInPortal()
+  }
+
+  tableFailureView = () => <ApiFailureView retryApi={this.retryApi} />
+
   tableSuccessView = () => (
     <TableView passUpdateUserToTable={this.passUpdateUserToTable} />
   )
@@ -88,11 +98,11 @@ class ReportingPortal extends Component {
   getTableData = () => {
     const {tableCurrentStatus} = this.state
     switch (tableCurrentStatus) {
-      case tableStatus.inprogress:
+      case tableStatus.IN_PROGRESS:
         return this.tableInitialView()
-      case tableStatus.success:
+      case tableStatus.SUCCESS:
         return this.tableSuccessView()
-      case tableStatus.failure:
+      case tableStatus.FAILURE:
         return this.tableFailureView()
       default:
         return null
