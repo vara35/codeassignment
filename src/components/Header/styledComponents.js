@@ -75,8 +75,8 @@ export const HeaderLogoContainer = styled.div`
   align-items: center;
 `
 export const HeaderImage = styled.img`
-  border-radius: 10px;
+  border-radius: 50%;
   height: 40px;
-  width: 50px;
+  width: 40px;
   margin-left: 8px;
 `

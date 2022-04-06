@@ -93,5 +93,6 @@ export const PaginationButton = styled.button`
   border-radius: 2px;
   border: solid 1px #d7dfe9;
   background-color: #ffffff;
+  cursor:pointer;
 }
 `
