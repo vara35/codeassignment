@@ -11,8 +11,8 @@ export const ProfileImage = styled.img`
   border-radius: 50%;
   border: 0;
   @media screen and (max-width: 767px) {
-    width: 18px;
-    height: 18px;
+    width: 16px;
+    height: 16px;
   }
 `
 export const UserName = styled.h3`
@@ -38,8 +38,10 @@ export const ProfileImageName = styled.span`
   border-radius: 50%;
   background-color: #ca9f00;
   color: #ffff;
+  font-size: 12px;
   @media screen and (max-width: 767px) {
-    width: 18px;
-    height: 18px;
+    width: 16px;
+    height: 16px;
+    font-size: 8px;
   }
 `

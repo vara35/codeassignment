@@ -6,9 +6,9 @@ export const TableStyle = styled.table`.
   border: solid 1px #d7dfe9;
   margin-bottom: 30px;
   @media screen and (max-width: 567px) {
-    width: 100%;
+    width: 90%;
     height: 34px;
-    margin:  0 15px 0 15px;
+    margin:  0 10px 0 15px;
   }
 `
 
@@ -27,8 +27,8 @@ export const ColumnThRow = styled.th`
     width: 25px;
     height: 10px;
     margin: 0;
-    font-size: 8px;
-    padding: 5px;
+    font-size: 6.5px;
+    padding: 3px;
   }
 `
 
@@ -72,13 +72,26 @@ export const TableBodyTd = styled.td`
   background-color: #ffffff;
   @media screen and (max-width: 567px) {
     height: 14px;
-    width: 104px;
-    font-size: 8px;
-    padding-left: 8px;
-    padding-right: 8px;
+    width: 30px;
+    font-size: 6px;
+    padding-left: 5px;
+    padding-right: 0px;
   }
 `
 export const PaginationContainer = styled.div`
   display: flex;
   justify-content: center;
+  @media screen and (max-width: 767px) {
+    margin-top: 15px;
+  }
+`
+export const PaginationButton = styled.button`
+   width: 24px;
+  height: 24px;
+  margin: 0 8px 0 0;
+  padding: 4px;
+  border-radius: 2px;
+  border: solid 1px #d7dfe9;
+  background-color: #ffffff;
+}
 `

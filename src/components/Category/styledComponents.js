@@ -11,7 +11,7 @@ export const CategoryContainer = styled.div`
   }
 `
 
-export const CategoryName = styled.span`
+export const CategoryName = styled.p`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -33,8 +33,10 @@ export const CategoryName = styled.span`
     props.addColor ? '#f3fff8' : 'rgba(11, 105, 255, 0.1)'};
   @media screen and (max-width: 567px) {
     min-width: 50px;
-    max-width: 75px;
     height: 16px;
-    font-size: 8px;
+    font-size: 6px;
+    margin-right: 10px;
+    margin-top: 0;
+    line-height: 0.5;
   }
 `

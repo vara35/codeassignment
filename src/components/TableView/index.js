@@ -13,6 +13,7 @@ import {
   TableBodyTd,
   ColumnThRow,
   PaginationContainer,
+  PaginationButton,
 } from './styledComponents'
 
 let parsedTableData = []
@@ -167,34 +168,34 @@ const TableView = props => {
         </tbody>
       </TableStyle>
       <PaginationContainer>
-        <button
+        <PaginationButton
           onClick={() => gotoPage(0)}
           disabled={!canPreviousPage}
           type="button"
         >
           {'<<'}
-        </button>{' '}
-        <button
+        </PaginationButton>{' '}
+        <PaginationButton
           onClick={() => previousPage()}
           disabled={!canPreviousPage}
           type="button"
         >
           {'<'}
-        </button>{' '}
-        <button
+        </PaginationButton>{' '}
+        <PaginationButton
           onClick={() => nextPage()}
           disabled={!canNextPage}
           type="button"
         >
           {'>'}
-        </button>{' '}
-        <button
+        </PaginationButton>{' '}
+        <PaginationButton
           onClick={() => gotoPage(pageCount - 1)}
           disabled={!canNextPage}
           type="button"
         >
           {'>>'}
-        </button>{' '}
+        </PaginationButton>{' '}
         <span>
           Page{' '}
           <strong>
